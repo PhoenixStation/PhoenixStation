@@ -9673,6 +9673,8 @@
 #include "modular_zzplurt\code\modules\lewd_chemistry\reagents\belly_enlarger.dm"
 #include "modular_zzplurt\code\modules\lewd_chemistry\reagents\butt_enlarger.dm"
 #include "modular_zzplurt\code\modules\lewd_chemistry\reagents\camphor.dm"
+#include "modular_zzplurt\code\modules\lewd_chemistry\reagents\dopamine.dm"
+#include "modular_zzplurt\code\modules\lewd_chemistry\reagents\rutt.dm"
 #include "modular_zzplurt\code\modules\mob\mob.dm"
 #include "modular_zzplurt\code\modules\mob\mob_defines.dm"
 #include "modular_zzplurt\code\modules\mob\mob_update_icons.dm"
