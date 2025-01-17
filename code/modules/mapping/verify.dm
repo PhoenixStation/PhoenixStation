@@ -48,7 +48,9 @@ GLOBAL_LIST_EMPTY(map_reports)
 				html += "<ul><li>[messages.Join("</li><li>")]</li></ul>"
 			html += "</li>"
 		html += "</ul></p>"
-	C << browse(html.Join(), "window=[tag];size=600x400")
+	var/datum/browser/browser = new(C.mob, "[tag]", "Report for map file [original_path]", 600, 400)
+	browser.set_content(html.Join())
+	browser.open()
 
 /datum/map_report/Topic(href, href_list)
 	. = ..()
