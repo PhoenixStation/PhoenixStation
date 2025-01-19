@@ -1,8 +1,3 @@
-/datum/preference/numeric/body_size/create_default_value()
-	minimum = BODY_SIZE_MIN
-	maximum = BODY_SIZE_MAX
-	. = ..()
-
 /datum/preference/toggle/scaled_appearance
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
