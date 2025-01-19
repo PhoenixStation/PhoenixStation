@@ -70,7 +70,7 @@
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
 	/// Do you need to be a slime-person to use this ability?
-	var/slime_restricted = TRUE
+	var/slime_restricted = FALSE // splurt edit: original = TRUE
 	///Is the person using this ability oversized?
 	var/oversized_user = FALSE
 	///What text is shown to others when the person uses the ability?

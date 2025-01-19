@@ -9,7 +9,7 @@
 	tgui_id = "NtosEmojipedia"
 	program_icon = "icons"
 	/// Store the list of potential emojis here.
-	var/static/list/emoji_list = icon_states(icon(EMOJI_SET))
+	var/static/list/emoji_list = icon_states(icon(EMOJI_SET)) + icon_states(icon(SPLURT_EMOJI_SET)) + icon_states(icon(SPLURT_EMOJI_SET_32)) // SPLURT EDIT - Added our custom emoji set
 
 /datum/computer_file/program/emojipedia/New()
 	. = ..()
