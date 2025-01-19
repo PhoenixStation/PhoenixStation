@@ -48,10 +48,13 @@ $game_announce_whitelist = array(
 	"tgstation",
 	"TerraGov-Marine-Corps",
 	// ORIGINAL END - SKYRAT EDIT: */
+	// PHOENIX EDIT - We'll use our repo
 	// SPLURT EDIT - We'll use our repo
 	//"Skyrat-tg",
-	"S.P.L.U.R.T-tg",
+	//"S.P.L.U.R.T-tg",
+	"PhoenixStation",
 	// SPLURT EDIT END
+	// PHOENIX EDIT END
 );
 
 // Any repository that matches in this blacklist will not appear on Discord.
@@ -402,7 +405,7 @@ function handle_pr($payload) {
 	if (!is_blacklisted($discord_announce_blacklist, $repo_name)) {
 		discord_announce($action, $payload, $pr_flags);
 	}
-	
+
 	if (in_array($repo_name, $game_announce_whitelist)) {
 		game_announce($action, $payload, $pr_flags);
 	}
