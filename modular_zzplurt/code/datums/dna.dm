@@ -42,6 +42,7 @@
 	var/new_slowdown = (abs(get_size(holder) - 1) * CONFIG_GET(number/body_size_slowdown_multiplier))
 	holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/small_stride, TRUE, new_slowdown)
 
+	/* Removed for now until we can figure out how to handle this
 	var/size_cap = CONFIG_GET(number/macro_health_cap)
 	if((size_cap > 0) && (get_size(holder) > size_cap))
 		last_capped_size = (last_capped_size ? last_capped_size : current_body_size)
@@ -54,6 +55,7 @@
 	var/healthchange = healthmod_new - healthmod_old
 	holder.maxHealth += healthchange
 	holder.health += healthchange
+	*/
 
 /mob/living/carbon/set_species(datum/species/mrace, icon_update, pref_load, list/override_features, list/override_mutantparts, list/override_markings)
 	. = ..()

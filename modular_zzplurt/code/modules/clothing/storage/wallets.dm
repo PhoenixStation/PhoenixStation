@@ -6,10 +6,9 @@
 	worn_icon_state = "nothing" // Sorry for that
 	icon_state = "tailbag"
 
-/obj/item/storage/wallet/refreshID()
+/obj/item/storage/wallet/tailbag/refreshID()
 	LAZYCLEARLIST(combined_access)
 
-	front_id = null
 	var/winning_tally = 0
 	var/is_magnetic_found = FALSE
 	for(var/obj/item/card/id/id_card in contents)

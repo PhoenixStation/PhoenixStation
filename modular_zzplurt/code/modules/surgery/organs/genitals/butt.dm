@@ -55,6 +55,11 @@
 
 	return ..()
 
+/obj/item/organ/external/genital/butt/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	if(DNA.features["butt_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
+	return ..()
+
 /datum/bodypart_overlay/mutant/genital/butt
 	feature_key = ORGAN_SLOT_BUTT
 	layers = EXTERNAL_ADJACENT | EXTERNAL_FRONT

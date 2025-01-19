@@ -5,6 +5,7 @@
 	key = ORGAN_SLOT_BUTT
 	color_src = USE_MATRIXED_COLORS
 	always_color_customizable = TRUE
+	has_skintone_shading = TRUE
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
@@ -25,6 +26,7 @@
 	associated_organ_slot = ORGAN_SLOT_BUTT // :3
 	key = ORGAN_SLOT_ANUS
 	color_src = USE_MATRIXED_COLORS
+	has_skintone_shading = TRUE
 	always_color_customizable = TRUE
 	relevent_layers = list(BODY_FRONT_LAYER)
 	genetic = TRUE
@@ -47,6 +49,7 @@
 	key = ORGAN_SLOT_BELLY
 	color_src = USE_ONE_COLOR
 	always_color_customizable = TRUE
+	has_skintone_shading = TRUE
 	relevent_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 	genetic = TRUE
 

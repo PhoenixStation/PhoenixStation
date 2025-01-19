@@ -124,16 +124,6 @@
   - rscadd: Added TGUI-based color palette and replaced all usages of BYOND color
       palettes with it (TGUI input preferences are still respected).
 2025-01-12:
-  MosleyTheMalO:
-  - bugfix: Fixes restorative metabolism so it processes correctly
-  - bugfix: Fixes Vacuum resistance by adding the missing trait to it
-  - bugfix: Fixes a lot of the lewd content using the sound pref instead of default
-      erp pref
-  - bugfix: Fixes condoms
-  - bugfix: Fixes ghost ass slapping to check for the config well
-  - bugfix: toggle subtypes no longer reset arousal related variables
-  - sound: adds more interaction sounds
-  - rscadd: adds the interaction details
   Impish_Delights:
   - rscadd: High-Functioning Zombies can now choose their eye color!
   LT3:
@@ -160,6 +150,16 @@
   - bugfix: hot/cold/tox/pressure adapted lungs are now consistently better than standard
       lungs in their respective area
   - bugfix: fixed sometimes passing out due to CO2 with hot/cold adapted lungs
+  MosleyTheMalO:
+  - bugfix: Fixes restorative metabolism so it processes correctly
+  - bugfix: Fixes Vacuum resistance by adding the missing trait to it
+  - bugfix: Fixes a lot of the lewd content using the sound pref instead of default
+      erp pref
+  - bugfix: Fixes condoms
+  - bugfix: Fixes ghost ass slapping to check for the config well
+  - bugfix: toggle subtypes no longer reset arousal related variables
+  - sound: adds more interaction sounds
+  - rscadd: adds the interaction details
   SingingSpock:
   - bugfix: The Spare ID safe code should now go to the person designated in our SOP
   StrangeWeirdKitten:
@@ -200,3 +200,59 @@
   - bugfix: Subtler will now filter out clientless mobs
   prototypemeat:
   - balance: Buffed Razor Claws and their upgraded variants, happy killing
+2025-01-14:
+  Arturlang:
+  - rscdel: no more wizard armor in wizdrobe, sorry,
+  KazooBard:
+  - qol: Heretic Synths also start with a living heart
+  MosleyTheMalO:
+  - bugfix: makes the softcap config disableable again
+  StrangeWeirdKitten, Bangle:
+  - rscadd: Adds another ambiance track to Icebox called Freezer, by Bangle.
+  Tonadas:
+  - rscadd: Added new Galactic Federation Jacket
+  - rscadd: Added Galactic Federation Jacket to character creator.
+2025-01-15:
+  MosleyTheMalO:
+  - bugfix: Fixes condoms for real this time
+  - bugfix: Makes the sex toy toggle actually drop sex toys
+  - bugfix: Fixes butts not displaying their skin alt and paves the way for belly
+      skin alts
+2025-01-16:
+  SmArtKar:
+  - bugfix: Fixed wallets not showing their ID
+2025-01-17:
+  ICE-IS-NICE(original), SuhEugene, Phoenix404 (port):
+  - rscadd: Added custom emote panel to TGUI chat interface
+  MosleyTheMalO:
+  - rscdel: Removes the obsolete sexuality pref
+  mcbalaam:
+  - bugfix: Added a join menu icon for the blacksmith
+  Arturlang:
+  - rscdel: Profound fishers without ckeys can no longer fish out juvenile lobsters,
+      this is to prevent lobster armies
+  zeroisthebiggay:
+  - bugfix: you can't get Free Real Centcom Skirtlenecks from the loadout any more
+2025-01-18:
+  MTandi:
+  - image: yet another medkit resprite
+  MajManatee and OrbisAnima:
+  - rscadd: Most (tm) suit slot items can be alt clicked and worn around the neck!
+  - balance: Fixes snowflake armor with two items that were stacking for protection
+  ReturnToZender:
+  - balance: The threshold for the Default has been increased by 600 seconds, or 10
+      minutes, to try to mellow that storyteller out a little bit.
+  - balance: The Clown is admin only, now.
+  Tonadas:
+  - rscadd: Added new Galactic Federation Cap to game, loadout selector, and Clothesmate.
+  - rscadd: Added Galactic Federation Jacket to clothesmate
+  Vanilla1040:
+  - image: added new Engi, Med, Cargo, Service, Science and Peacekeeper borg varients/alts
+2025-01-19:
+  Arturlang:
+  - rscdel: removes combat and deluxe hypo from medlathe
+  - rscadd: adds combat hypo to deforest company imports
+  CupOfMoths:
+  - rscadd: Added pretty new hairstyle
+  - rscadd: Added QoL alt of hairstyle
+  - bugfix: Fixed a misaligned hair sprite

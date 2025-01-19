@@ -99,6 +99,7 @@ jobs:
           bash skyrat/tools/skyrat_check_grep.sh # SKYRAT EDIT ADDITION - checking modular_skyrat code
           bash modular_zubbers/tools/ci/zubbers_check_grep.sh # BUBBER EDIT ADDITION - checking modular_zubbers code
           bash modular_zzplurt/tools/ci/splurt_check_grep.sh # SPLURT EDIT ADDITION - checking modular_zzplurt code
+          bash modular_zzzphoenix/tools/ci/phoenix_check_grep.sh # PHOENIX EDIT ADDITION - checking modular_zzzphoenix code
       - name: Ticked File Enforcement
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: |
