@@ -9,6 +9,7 @@ import { Pane } from 'tgui/layouts';
 
 import { NowPlayingWidget, useAudio } from './audio';
 import { ChatPanel, ChatTabs } from './chat';
+import { EmotesToolbar, useEmotes } from './emotes'; // SPLURT EDIT:  CUSTOM EMOTE PANEL
 import { useGame } from './game';
 import { Notifications } from './Notifications';
 import { PingIndicator } from './ping';
@@ -19,6 +20,7 @@ export const Panel = (props) => {
   const audio = useAudio();
   const settings = useSettings();
   const game = useGame();
+  const emotes = useEmotes(); // SPLURT EDIT:  CUSTOM EMOTE PANEL
   if (process.env.NODE_ENV !== 'production') {
     const { useDebug, KitchenSink } = require('tgui/debug');
     const debug = useDebug();
@@ -39,6 +41,18 @@ export const Panel = (props) => {
               <Stack.Item>
                 <PingIndicator />
               </Stack.Item>
+              {/* SPLURT EDIT START:  CUSTOM EMOTE PANEL */}
+              <Stack.Item>
+                <Button
+                  color="grey"
+                  selected={emotes.visible}
+                  icon="asterisk"
+                  tooltip="Emote Panel"
+                  tooltipPosition="bottom-start"
+                  onClick={() => emotes.toggle()}
+                />
+              </Stack.Item>
+              {/* SPLURT EDIT END:  CUSTOM EMOTE PANEL */}
               <Stack.Item>
                 <Button
                   color="grey"
@@ -63,6 +77,15 @@ export const Panel = (props) => {
             </Stack>
           </Section>
         </Stack.Item>
+        {/* SPLURT EDIT START:  CUSTOM EMOTE PANEL */}
+        {emotes.visible && (
+          <Stack.Item>
+            <Section>
+              <EmotesToolbar />
+            </Section>
+          </Stack.Item>
+        )}
+        {/* SPLURT EDIT END:  CUSTOM EMOTE PANEL */}
         {audio.visible && (
           <Stack.Item>
             <Section>

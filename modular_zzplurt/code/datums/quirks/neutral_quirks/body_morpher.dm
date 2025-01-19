@@ -11,8 +11,6 @@
 	mail_goodies = list (
 		/obj/item/toy/foamblade = 1 // Fake changeling
 	)
-	hidden_quirk = TRUE
-
 /datum/quirk/body_morpher/add(client/client_source)
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
