@@ -271,10 +271,11 @@
 
 	// Define operative alias
 	var/operative_alias = client_source?.prefs?.read_preference(/datum/preference/name/operative_alias)
+	var/datum/preference/name/operative_alias/pref_operative_alias = GLOB.preference_entries[/datum/preference/name/operative_alias]
 
 	// Update card information
 	// Try to use operative name
-	if(operative_alias)
+	if(operative_alias && pref_operative_alias.is_accessible(client_source?.prefs))
 		id_vampire.registered_name = operative_alias
 
 	// Fallback to default name

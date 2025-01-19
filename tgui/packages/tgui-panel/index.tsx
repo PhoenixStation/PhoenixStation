@@ -19,6 +19,7 @@ import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
 
 import { audioMiddleware, audioReducer } from './audio';
 import { chatMiddleware, chatReducer } from './chat';
+import { emotesReducer } from './emotes'; // SPLURT EDIT:  CUSTOM EMOTE PANEL
 import { gameMiddleware, gameReducer } from './game';
 import { setupPanelFocusHacks } from './panelFocus';
 import { pingMiddleware, pingReducer } from './ping';
@@ -32,6 +33,7 @@ const store = configureStore({
   reducer: combineReducers({
     audio: audioReducer,
     chat: chatReducer,
+    emotes: emotesReducer, // SPLURT EDIT:  CUSTOM EMOTE PANEL
     game: gameReducer,
     ping: pingReducer,
     settings: settingsReducer,
@@ -100,6 +102,7 @@ const setupApp = () => {
       [
         './audio',
         './chat',
+        './emotes', // SPLURT EDIT:  CUSTOM EMOTE PANEL
         './game',
         './Notifications',
         './Panel',

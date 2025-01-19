@@ -269,6 +269,7 @@
 /datum/preference/choiced/erp_status_mechanics/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
+/* SPLURT EDIT REMOVAL - Not needed
 /datum/preference/choiced/erp_sexuality
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_identifier = PREFERENCE_PLAYER
@@ -298,6 +299,7 @@
 
 /datum/preference/choiced/erp_sexuality/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
+*/ // SPLURT EDIT REMOVAL END
 
 /datum/preference/choiced/erp_status_hypno
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
