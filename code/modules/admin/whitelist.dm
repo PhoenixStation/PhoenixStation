@@ -1,7 +1,8 @@
 #define WHITELISTFILE "[global.config.directory]/whitelist.txt"
 
 GLOBAL_LIST(whitelist)
-
+// PHOENIX EDIT START: WHITELIST DB
+/*
 /proc/load_whitelist()
 	GLOB.whitelist = list()
 	for(var/line in world.file2list(WHITELISTFILE))
@@ -18,5 +19,6 @@ GLOBAL_LIST(whitelist)
 	if(!GLOB.whitelist)
 		return FALSE
 	. = (ckey in GLOB.whitelist)
-
+*/
+// PHOENIX EDIT END: WHITELIST
 #undef WHITELISTFILE

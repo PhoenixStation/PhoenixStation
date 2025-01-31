@@ -9796,5 +9796,6 @@
 #include "modular_zzplurt\code\modules\vending\lustwish.dm"
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
+#include "modular_zzzphoenix\code\modules\admin\whitelist.dm"
 // END_INCLUDE
 

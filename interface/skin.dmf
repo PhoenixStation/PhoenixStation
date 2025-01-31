@@ -70,7 +70,7 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
-		icon = 'modular_zzplurt\\icons\\UI_Icons\\common\\splurt_64.png'
+		icon = 'modular_zzzphoenix\\icons\\UI_Icons\\common\\phoenix_64.png'
 		macro = "default"
 		menu = "menu"
 	elem "split"
