@@ -46,3 +46,10 @@ export const custom_genital_fluids_pref: FeatureToggle = {
   description: 'Allow custom genital fluids.',
   component: CheckboxInput,
 };
+
+export const cumflation_pref: FeatureToggle = {
+  name: 'Cumflation',
+  category: 'ERP',
+  description: 'Allow your genitals to get cumflated.',
+  component: CheckboxInput,
+};

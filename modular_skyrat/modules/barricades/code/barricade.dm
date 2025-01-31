@@ -202,6 +202,8 @@
 		else
 			. += image('modular_skyrat/modules/barricades/icons/barricade.dmi', icon_state = "[barricade_type]_closed_wire")
 
+// SPLURT EDIT START: REMOVE CRASHING VERBS
+/*
 /obj/structure/deployable_barricade/verb/rotate()
 	set name = "Rotate barricade counterclockwise <"
 	set category = "Object"
@@ -223,7 +225,8 @@
 		return FALSE
 
 	setDir(turn(dir, 270))
-
+*/
+// SPLURT EDIT END: REMOVE CRASHING VERBS
 
 /obj/structure/deployable_barricade/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()

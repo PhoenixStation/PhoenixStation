@@ -114,28 +114,48 @@
 	if(target == user && usage == INTERACTION_OTHER)
 		return FALSE
 
+	var/nonhuman_client_bypass_user = !ishuman(user) && !user.client && !SSinteractions.is_blacklisted(user)
+	var/nonhuman_client_bypass_target = !ishuman(target) && !target.client && !SSinteractions.is_blacklisted(target)
+
+	var/mob/living/carbon/human/human_user = user
+	var/mob/living/carbon/human/human_target = target
+
 	if(unsafe_types & INTERACTION_EXTREME)
-		if(!(user.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) != "No") || !(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) != "No"))
+		if(!(user.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) != "No" || nonhuman_client_bypass_user) || !(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) != "No" || nonhuman_client_bypass_target))
 			return FALSE
 	if(unsafe_types & INTERACTION_HARMFUL)
-		if(!(user.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) != "No") || !(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) != "No"))
+		if(!(user.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) != "No" || nonhuman_client_bypass_user) || !(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) != "No" || nonhuman_client_bypass_target))
 			return FALSE
 	if(unsafe_types & INTERACTION_UNHOLY)
-		if(!(user.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) != "No") || !(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) != "No"))
+		if(!(user.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) != "No" || nonhuman_client_bypass_user) || !(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) != "No" || nonhuman_client_bypass_target))
 			return FALSE
 
 	if(user_required_parts.len)
 		for(var/slot in user_required_parts)
-			if(!user.has_genital(LAZYACCESS(user_required_parts, slot) || REQUIRE_GENITAL_EXPOSED, slot))
-				return FALSE
+			if(!ishuman(user))
+				if(!user.simulated_genitals[slot])
+					return FALSE
+			else
+				if(!human_user.has_genital(LAZYACCESS(user_required_parts, slot) || REQUIRE_GENITAL_EXPOSED, slot))
+					return FALSE
 
 	if(target_required_parts.len)
 		for(var/slot in target_required_parts)
-			if(!target.has_genital(LAZYACCESS(target_required_parts, slot) || REQUIRE_GENITAL_EXPOSED, slot))
-				return FALSE
+			if(!ishuman(target))
+				if(!target.simulated_genitals[slot])
+					return FALSE
+			else
+				if(!human_target.has_genital(LAZYACCESS(target_required_parts, slot) || REQUIRE_GENITAL_EXPOSED, slot))
+					return FALSE
 
 	for(var/requirement in interaction_requires)
 		switch(requirement)
+			if(INTERACTION_REQUIRE_SELF_HUMAN)
+				if(!ishuman(user))
+					return FALSE
+			if(INTERACTION_REQUIRE_TARGET_HUMAN)
+				if(!ishuman(target))
+					return FALSE
 			if(INTERACTION_REQUIRE_SELF_HAND)
 				if(!user.get_active_hand())
 					return FALSE
@@ -143,10 +163,16 @@
 				if(!target.get_active_hand())
 					return FALSE
 			if(INTERACTION_REQUIRE_SELF_MOUTH)
-				if(!user.get_bodypart(BODY_ZONE_HEAD) || user.is_mouth_covered())
+				if(iscarbon(user))
+					if(!user.get_bodypart(BODY_ZONE_HEAD) || user.is_mouth_covered())
+						return FALSE
+				else if(!user.simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_MOUTH])
 					return FALSE
 			if(INTERACTION_REQUIRE_TARGET_MOUTH)
-				if(!target.get_bodypart(BODY_ZONE_HEAD) || target.is_mouth_covered())
+				if(iscarbon(target))
+					if(!target.get_bodypart(BODY_ZONE_HEAD) || target.is_mouth_covered())
+						return FALSE
+				else if(!target.simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_MOUTH])
 					return FALSE
 			if(INTERACTION_REQUIRE_SELF_TOPLESS)
 				if(!user.is_topless())
@@ -171,12 +197,12 @@
 	return TRUE
 
 /// Called when the interaction is performed
-/datum/interaction/proc/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/proc/post_interaction(mob/living/user, mob/living/target)
 	handle_clown_interaction(user, target)
 	return
 
 /// Handles clown-specific interaction effects
-/datum/interaction/proc/handle_clown_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/proc/handle_clown_interaction(mob/living/user, mob/living/target)
 	if(!prob(50))  // 50% chance for honk effects
 		return
 
@@ -204,7 +230,7 @@
 				playsound(target, 'sound/items/bikehorn.ogg', 40, TRUE, -1)
 
 // Called when either the user or target is cumming from the interaction, makes the interaction text
-/datum/interaction/proc/show_climax(mob/living/carbon/human/cumming, mob/living/carbon/human/came_in, position)
+/datum/interaction/proc/show_climax(mob/living/cumming, mob/living/came_in, position)
 	var/override_check = length(cum_message_text_overrides[position]) && length(cum_self_text_overrides[position]) && (length(cum_partner_text_overrides[position]) || usage == INTERACTION_SELF)
 	if(!override_check)
 		return FALSE

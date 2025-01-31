@@ -23,7 +23,7 @@
 	user_arousal = 3
 	target_arousal = 3
 
-/datum/interaction/lewd/grindface/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/grindface/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
 	// Get shoes or barefoot text
 	var/obj/item/clothing/shoes/worn_shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
@@ -59,7 +59,7 @@
 	user_arousal = 3
 	target_arousal = 3
 
-/datum/interaction/lewd/grindmouth/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/grindmouth/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
 	var/obj/item/clothing/shoes/worn_shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
 	var/feet_text = worn_shoes?.name || pick("bare feet", "toes", "soles")
@@ -116,7 +116,7 @@
 	user_arousal = 3
 	target_arousal = 6
 
-/datum/interaction/lewd/footjob/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/footjob/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
 	var/obj/item/clothing/shoes/worn_shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
 	var/feet_text = worn_shoes?.name || pick("foot", "sole")
@@ -127,7 +127,7 @@
 	. = ..()
 	message = original_messages
 
-/datum/interaction/lewd/footjob/show_climax(mob/living/carbon/human/cumming, mob/living/carbon/human/came_in, position)
+/datum/interaction/lewd/footjob/show_climax(mob/living/cumming, mob/living/came_in, position)
 	var/obj/item/clothing/shoes/worn_shoes = cumming.get_item_by_slot(ITEM_SLOT_FEET)
 	var/feet_text = worn_shoes?.name || pick("foot", "sole")
 
@@ -170,7 +170,7 @@
 	user_arousal = 4
 	target_arousal = 7
 
-/datum/interaction/lewd/footjob/double/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/footjob/double/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
 	var/obj/item/clothing/shoes/worn_shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
 	var/feet_text = worn_shoes?.name || "feet"

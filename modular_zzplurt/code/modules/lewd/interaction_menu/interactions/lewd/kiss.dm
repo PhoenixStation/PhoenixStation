@@ -33,9 +33,9 @@
 	user_arousal = 2
 	target_arousal = 2
 
-/datum/interaction/lewd/kiss/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/kiss/post_interaction(mob/living/user, mob/living/target)
 	. = ..()
-	
+
 	// Check if user has TRAIT_KISS_SLUT and increase their lust
 	if(HAS_TRAIT(user, TRAIT_KISS_SLUT))
 		user.adjust_pleasure(10, target, interaction = src, position = CLIMAX_POSITION_USER)

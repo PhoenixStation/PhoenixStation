@@ -33,6 +33,8 @@
 	user_arousal = 6
 
 /datum/interaction/lewd/jack_self/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	if(!ishuman(user))
+		return
 	var/obj/item/reagent_containers/liquid_container
 
 	var/obj/item/cached_item = user.get_active_held_item()
@@ -55,6 +57,8 @@
 		. = ..()
 
 /datum/interaction/lewd/jack_self/post_climax(mob/living/carbon/human/user, mob/living/carbon/human/target, position)
+	if(!ishuman(user))
+		return
 	var/obj/item/reagent_containers/liquid_container
 	var/obj/item/cached_item = user.get_active_held_item()
 	if(istype(cached_item, /obj/item/reagent_containers))

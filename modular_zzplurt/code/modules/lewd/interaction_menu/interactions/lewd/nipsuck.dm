@@ -19,7 +19,7 @@
 	target_pleasure = 3
 	target_arousal = 5
 
-/datum/interaction/lewd/nipsuck/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/nipsuck/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
 
 	// Handle different intents
@@ -48,7 +48,7 @@
 	. = ..()
 	message = original_messages
 
-/datum/interaction/lewd/nipsuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/nipsuck/post_interaction(mob/living/user, mob/living/target)
 	. = ..()
 	var/obj/item/organ/external/genital/breasts/breasts = target.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(breasts?.internal_fluid_datum)

@@ -78,6 +78,7 @@
 	name = "Deflate Belly"
 	description = "Deflate belly."
 	user_required_parts = list(ORGAN_SLOT_BELLY = REQUIRE_GENITAL_ANY)
+	interaction_requires = list(INTERACTION_REQUIRE_SELF_HUMAN)
 	usage = INTERACTION_SELF
 	message = list(
 		"deflates their belly",
@@ -100,6 +101,7 @@
 	name = "Inflate Belly"
 	description = "Inflate belly."
 	user_required_parts = list(ORGAN_SLOT_BELLY = REQUIRE_GENITAL_ANY)
+	interaction_requires = list(INTERACTION_REQUIRE_SELF_HUMAN)
 	usage = INTERACTION_SELF
 	message = list(
 		"inflates their belly",

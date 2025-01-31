@@ -19,23 +19,23 @@
 			return TRUE
 
 /// Returns true if the human has an accessible penis for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
+/mob/living/carbon/human/has_penis(required_state = REQUIRE_GENITAL_ANY)	// SPLURT EDIT - INTERACTIONS - Now reuses the base check from modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return has_genital(required_state, ORGAN_SLOT_PENIS)
 
 /// Returns true if the human has accessible balls for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_balls(required_state = REQUIRE_GENITAL_ANY)
+/mob/living/carbon/human/has_balls(required_state = REQUIRE_GENITAL_ANY)	// SPLURT EDIT - INTERACTIONS - Now reuses the base check from modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return has_genital(required_state, ORGAN_SLOT_TESTICLES)
 
 /// Returns true if the human has an accessible vagina for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_vagina(required_state = REQUIRE_GENITAL_ANY)
+/mob/living/carbon/human/has_vagina(required_state = REQUIRE_GENITAL_ANY)	// SPLURT EDIT - INTERACTIONS - Now reuses the base check from modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return has_genital(required_state, ORGAN_SLOT_VAGINA)
 
 /// Returns true if the human has accessible breasts for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_breasts(required_state = REQUIRE_GENITAL_ANY)
+/mob/living/carbon/human/has_breasts(required_state = REQUIRE_GENITAL_ANY)	// SPLURT EDIT - INTERACTIONS - Now reuses the base check from modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return has_genital(required_state, ORGAN_SLOT_BREASTS)
 
 /// Returns true if the human has an accessible anus for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_anus(required_state = REQUIRE_GENITAL_ANY)
+/mob/living/carbon/human/has_anus(required_state = REQUIRE_GENITAL_ANY)	// SPLURT EDIT - INTERACTIONS - Now reuses the base check from modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	if(issilicon(src))
 		return TRUE
 	return has_genital(required_state, ORGAN_SLOT_ANUS)
@@ -45,5 +45,5 @@
 	return has_genital(required_state, ORGAN_SLOT_BUTT)
 
 /// Returns true if the human has an accessible belly for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_belly(required_state = REQUIRE_GENITAL_ANY)
+/mob/living/carbon/human/has_belly(required_state = REQUIRE_GENITAL_ANY) // SPLURT EDIT - INTERACTIONS - Now reuses the base check from modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return has_genital(required_state, ORGAN_SLOT_BELLY)

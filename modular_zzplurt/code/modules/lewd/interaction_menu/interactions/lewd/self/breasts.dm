@@ -24,6 +24,8 @@
 
 /datum/interaction/lewd/titgrope_self/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(!ishuman(user))
+		return
 	if(prob(5 + user.arousal))
 		user.visible_message(span_lewd("<b>\The [user]</b> [pick(
 			"shivers in arousal.",
@@ -78,6 +80,8 @@
 
 /datum/interaction/lewd/self_nipsuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(!ishuman(user))
+		return
 	var/obj/item/organ/external/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(breasts?.internal_fluid_datum)
 		// Calculate milk amount based on how full the breasts are (0.5 to 2 multiplier)

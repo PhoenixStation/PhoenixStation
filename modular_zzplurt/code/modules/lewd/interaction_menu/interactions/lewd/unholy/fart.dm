@@ -108,7 +108,7 @@
 	sound_possible = GLOB.brap_noises // GLOB.brap_noises: expected a constant expression
 	. = ..()
 
-/datum/interaction/lewd/unholy/fartfuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/unholy/fartfuck/post_interaction(mob/living/user, mob/living/target)
 	. = ..()
 	conditional_pref_sound(user, pick('modular_zzplurt/sound/interactions/bang1.ogg',
 						'modular_zzplurt/sound/interactions/bang2.ogg',

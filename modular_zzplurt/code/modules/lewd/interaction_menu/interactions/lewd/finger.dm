@@ -22,7 +22,7 @@
 	target_arousal = 5
 	target_pain = 0
 
-/datum/interaction/lewd/finger/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/finger/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
 	var/obj/item/reagent_containers/liquid_container
 
@@ -45,7 +45,7 @@
 	message = original_messages
 	interaction_modifier_flags &= ~INTERACTION_OVERRIDE_FLUID_TRANSFER
 
-/datum/interaction/lewd/finger/post_climax(mob/living/carbon/human/cumming, mob/living/carbon/human/came_in, position)
+/datum/interaction/lewd/finger/post_climax(mob/living/cumming, mob/living/came_in, position)
 	if(interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER)
 		var/obj/item/reagent_containers/liquid_container
 

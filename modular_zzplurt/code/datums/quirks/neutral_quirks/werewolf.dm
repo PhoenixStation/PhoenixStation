@@ -151,7 +151,7 @@
 		// Apply Appearance
 		//action_owner.regenerate_organs() // This causes ALL organs to be healed. Do not use it.
 		action_owner.update_body(TRUE)
-		action_owner.update_mutant_bodyparts(TRUE)
+		action_owner.update_body_parts(TRUE)
 
 		// Update possible genital organs
 		/* Temporarily disabled
@@ -204,7 +204,7 @@
 		// Apply Appearance
 		//action_owner.regenerate_organs() // This causes ALL organs to be healed. Do not use it.
 		action_owner.update_body(TRUE)
-		action_owner.update_mutant_bodyparts(TRUE)
+		action_owner.update_body_parts(TRUE)
 		//action_owner.update_size(clamp(get_size(action_owner) - 0.5, RESIZE_MICRO, RESIZE_MACRO)) // Temporarily disabled
 
 		// Revert genital organs

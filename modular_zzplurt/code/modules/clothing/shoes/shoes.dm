@@ -2,7 +2,10 @@
 	name = "invisifiber footwraps"
 	desc = "A set of transparent fibers used for wrapping claws or paws."
 	icon = 'modular_zzplurt/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_zzplurt/icons/mob/clothing/shoes.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	icon_state = "foot_wraps_transparent"
+	worn_icon_state = "none"
 	// No overlay, because they're invisible!
 
 /obj/item/clothing/shoes/jackboots/toeless

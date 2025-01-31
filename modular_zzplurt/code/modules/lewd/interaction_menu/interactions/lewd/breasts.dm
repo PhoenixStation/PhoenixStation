@@ -2,7 +2,7 @@
 	name = "Breastfeed"
 	description = "Breastfeed them."
 	user_required_parts = list(ORGAN_SLOT_BREASTS = REQUIRE_GENITAL_EXPOSED)
-	interaction_requires = list(INTERACTION_REQUIRE_TARGET_MOUTH)
+	interaction_requires = list(INTERACTION_REQUIRE_TARGET_MOUTH, INTERACTION_REQUIRE_SELF_HUMAN)
 	message = list(
 		"pushes their breasts against %TARGET%'s mouth, squirting their warm %MILK% into their mouth.",
 		"fills %TARGET%'s mouth with warm, sweet %MILK% as they squeeze their boobs, panting.",
@@ -69,7 +69,7 @@
 	target_pleasure = 3
 	target_arousal = 5
 
-/datum/interaction/lewd/titgrope/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/titgrope/act(mob/living/user, mob/living/target)
 	var/obj/item/reagent_containers/liquid_container
 	var/list/original_messages = message.Copy()
 
@@ -117,7 +117,7 @@
 	. = ..()
 	message = original_messages
 
-/datum/interaction/lewd/titgrope/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/titgrope/post_interaction(mob/living/user, mob/living/target)
 	. = ..()
 	if(interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER)
 		var/obj/item/reagent_containers/liquid_container
@@ -211,6 +211,8 @@
 
 /datum/interaction/lewd/breastsmother/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(!istype(user))
+		return
 	if(prob((user.dna.features["sexual_potency"] * 5) + 15))
 		target.adjustOxyLoss(2)
 		target.adjust_arousal(5)
