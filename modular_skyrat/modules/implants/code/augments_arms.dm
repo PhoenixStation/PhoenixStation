@@ -69,7 +69,8 @@
 	var/cutter_bare_wound_bonus = CUTTER_WOUND_BONUS
 	tool_behaviour = TOOL_KNIFE
 	toolspeed = 1
-	attack_speed = 6 //Splurt Edit
+	attack_speed = 6
+	force = 15 //Splurt Edit/Addition
 	item_flags = NEEDS_PERMIT //Beepers gets angry if you get caught with this.
 
 /obj/item/knife/razor_claws/attack_self(mob/user)
@@ -92,7 +93,7 @@
 		to_chat(user, span_notice("You shift [src] into Killing mode, for slicing."))
 		icon_state = "wolverine"
 		inhand_icon_state = "wolverine"
-		force = knife_force
+		force = 15 //Splurt Edit
 		sharpness = KNIFE_SHARPNESS
 		wound_bonus = knife_wound_bonus
 		bare_wound_bonus = KNIFE_BARE_WOUND_BONUS
@@ -237,5 +238,6 @@
 #undef CUTTER_FORCE
 #undef CUTTER_WOUND_BONUS
 #undef ENHANCED_KNIFE_FORCE
+#undef ENHANCED_CLAW_FORCE //Splurt Addition
 #undef ENHANCED_KNIFE_WOUND_BONUS
 #undef ENHANCED_KNIFE_ARMOR_PENETRATION

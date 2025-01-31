@@ -21,6 +21,10 @@
 #define INTERACTION_REQUIRE_SELF_FEET "self_feet"
 #define INTERACTION_REQUIRE_TARGET_FEET "target_feet"
 
+// A person needs to be human to do this interaction
+#define INTERACTION_REQUIRE_SELF_HUMAN "self_human"
+#define INTERACTION_REQUIRE_TARGET_HUMAN "target_human"
+
 /// Climax definitions
 
 //Climaxing genitals

@@ -156,3 +156,9 @@ export const vagina_fluid: FeatureChoiced = {
   description: 'The type of fluid produced by the vagina.',
   component: FeatureDropdownInput,
 };
+
+export const cumflates_partners_pref: FeatureToggle = {
+  name: 'Cumflates Partners',
+  description: 'Your character cumflates partners.',
+  component: CheckboxInput,
+};

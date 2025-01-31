@@ -74,7 +74,7 @@
 	target_arousal = 2
 	target_pain = 5
 
-/datum/interaction/lewd/throatfuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/throatfuck/post_interaction(mob/living/user, mob/living/target)
 	. = ..()
 	var/stat_before = target.stat
 	target.adjustOxyLoss(3)

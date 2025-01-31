@@ -28,6 +28,8 @@ type ContentPrefsInfo = {
   belly_shrinkage_pref: boolean;
   forced_neverboner_pref: boolean;
   custom_genital_fluids_pref: boolean;
+  cumflation_pref: boolean;
+  cumflates_partners_pref: boolean;
   // Vore prefs
   vore_enable_pref: boolean;
   vore_overlays: boolean;
@@ -69,6 +71,8 @@ export const ContentPreferencesTab = ({
     belly_shrinkage_pref,
     forced_neverboner_pref,
     custom_genital_fluids_pref,
+    cumflation_pref,
+    cumflates_partners_pref,
     // Vore prefs
     vore_enable_pref,
     vore_overlays,
@@ -212,6 +216,18 @@ export const ContentPreferencesTab = ({
             'custom_genital_fluids_pref',
             custom_genital_fluids_pref,
             'Custom Genital Fluids',
+          )}
+          {renderToggle(
+            'cumflation_pref',
+            cumflation_pref,
+            'Cumflation',
+            'Allow your genitals to get cumflated',
+          )}
+          {renderToggle(
+            'cumflates_partners_pref',
+            cumflates_partners_pref,
+            'Cumflates Partners',
+            'Your character cumflates partners.',
           )}
 
           {/* Vore Preferences */}

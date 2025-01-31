@@ -30,7 +30,7 @@
 	user_pleasure = 4
 	user_arousal = 6
 
-/datum/interaction/lewd/finger_self_vagina/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/finger_self_vagina/act(mob/living/user, mob/living/target)
 	var/obj/item/reagent_containers/liquid_container
 
 	var/obj/item/cached_item = user.get_active_held_item()
@@ -52,7 +52,9 @@
 	else
 		. = ..()
 
-/datum/interaction/lewd/finger_self_vagina/post_climax(mob/living/carbon/human/user, mob/living/carbon/human/target, position)
+/datum/interaction/lewd/finger_self_vagina/post_climax(mob/living/user, mob/living/target, position)
+	if(!ishuman(user))
+		return
 	var/obj/item/reagent_containers/liquid_container
 	var/obj/item/cached_item = user.get_active_held_item()
 	if(istype(cached_item, /obj/item/reagent_containers))

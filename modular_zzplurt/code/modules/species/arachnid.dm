@@ -19,7 +19,7 @@
 	changesource_flags = MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | WABBAJACK | MIRROR_BADMIN | SLIME_EXTRACT
 
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	external_organs = list(
+	mutant_organs = list(
 		/obj/item/organ/external/mandibles = "Plain",
 		/obj/item/organ/external/spinneret = "Plain",
 		/obj/item/organ/external/arachnid_legs = "Plain",

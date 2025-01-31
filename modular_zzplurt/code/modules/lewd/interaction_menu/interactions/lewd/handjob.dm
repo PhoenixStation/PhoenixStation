@@ -44,7 +44,7 @@
 	target_pleasure = 4
 	target_arousal = 6
 
-/datum/interaction/lewd/handjob/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/handjob/act(mob/living/user, mob/living/target)
 	var/obj/item/reagent_containers/liquid_container
 
 	// Check active hand first
@@ -69,7 +69,7 @@
 	else
 		. = ..()
 
-/datum/interaction/lewd/handjob/show_climax(mob/living/carbon/human/cumming, mob/living/carbon/human/came_in, position)
+/datum/interaction/lewd/handjob/show_climax(mob/living/cumming, mob/living/came_in, position)
 	if(interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER)
 		var/obj/item/reagent_containers/liquid_container
 
@@ -107,7 +107,7 @@
 
 	. = ..()
 
-/datum/interaction/lewd/handjob/post_climax(mob/living/carbon/human/cumming, mob/living/carbon/human/came_in, position)
+/datum/interaction/lewd/handjob/post_climax(mob/living/cumming, mob/living/came_in, position)
 	if(interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER)
 		var/obj/item/reagent_containers/liquid_container
 

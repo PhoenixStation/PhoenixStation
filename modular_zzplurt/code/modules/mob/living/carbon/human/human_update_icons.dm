@@ -89,7 +89,7 @@
 		overlays_standing[UNDERWEAR_LAYER] = underwear_overlay
 		apply_overlay(UNDERWEAR_LAYER)
 
-	update_mutant_bodyparts()
+	update_body_parts()
 
 /mob/living/carbon/human/update_worn_shirt(update_obscured = TRUE)
 	remove_overlay(SHIRT_LAYER)
@@ -162,7 +162,7 @@
 		overlays_standing[SHIRT_LAYER] = shirt_overlay
 		apply_overlay(SHIRT_LAYER)
 
-	update_mutant_bodyparts()
+	update_body_parts()
 
 
 /mob/living/carbon/human/update_worn_bra(update_obscured = TRUE)
@@ -237,7 +237,7 @@
 		overlays_standing[BRA_LAYER] = bra_overlay
 		apply_overlay(BRA_LAYER)
 
-	update_mutant_bodyparts()
+	update_body_parts()
 
 /mob/living/carbon/human/update_worn_wrists(update_obscured = TRUE)
 	remove_overlay(WRISTS_LAYER)

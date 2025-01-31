@@ -41,7 +41,7 @@
 	user_arousal = 3
 	target_arousal = 3
 
-/datum/interaction/lewd/lickfeet/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/lickfeet/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
 	var/obj/item/clothing/shoes/shoes = target.get_item_by_slot(ITEM_SLOT_FEET)
 

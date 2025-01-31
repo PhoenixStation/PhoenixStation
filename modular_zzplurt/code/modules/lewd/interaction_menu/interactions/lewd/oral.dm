@@ -43,7 +43,7 @@
 	user_arousal = 3
 	target_arousal = 7
 
-/datum/interaction/lewd/oral_vagina/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/oral_vagina/act(mob/living/user, mob/living/target)
 	var/default_sounds = sound_possible.Copy()
 	if(user.gender == FEMALE)
 		sound_possible += list(
@@ -106,7 +106,7 @@
 	user_arousal = 3
 	target_arousal = 7
 
-/datum/interaction/lewd/oral_penis/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/oral_penis/act(mob/living/user, mob/living/target)
 	var/default_sounds = sound_possible.Copy()
 	if(user.gender == FEMALE)
 		sound_possible += list(
@@ -126,6 +126,8 @@
 
 /datum/interaction/lewd/oral_penis/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(!ishuman(target))
+		return
 	if(prob((target.dna.features["sexual_potency"] * 10) + 15))
 		user.adjustOxyLoss(3)
 		target.adjust_arousal(10)

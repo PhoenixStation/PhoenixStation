@@ -85,6 +85,7 @@
 		new deflated_type(get_turf(src))
 	qdel(src)
 
+// SPLURT EDIT START: REMOVE CRASHING VERBS
 /*
 /obj/structure/inflatable/verb/hand_deflate()
 	set name = "Deflate"
@@ -95,6 +96,7 @@
 		return
 	deflate(FALSE)
 */
+// SPLURT EDIT END: REMOVE CRASHING VERBS
 
 /obj/structure/inflatable/door
 	name = "inflatable door"

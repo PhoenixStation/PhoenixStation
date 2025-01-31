@@ -30,7 +30,7 @@
 	user_pleasure = 5
 	user_arousal = 7
 
-/datum/interaction/lewd/oral_vagina_self/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/oral_vagina_self/act(mob/living/user, mob/living/target)
 	var/default_sounds = sound_possible.Copy()
 	if(user.gender == FEMALE)
 		sound_possible += list(
@@ -80,7 +80,7 @@
 	user_pleasure = 5
 	user_arousal = 7
 
-/datum/interaction/lewd/oral_self/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/oral_self/act(mob/living/user, mob/living/target)
 	var/default_sounds = sound_possible.Copy()
 	if(user.gender == FEMALE)
 		sound_possible += list(

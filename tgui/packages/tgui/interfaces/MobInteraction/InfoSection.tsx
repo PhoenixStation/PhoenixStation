@@ -1,6 +1,7 @@
 import { useBackend } from '../../backend';
 import {
   BlockQuote,
+  Grid,
   Icon,
   ProgressBar,
   Section,
@@ -51,8 +52,8 @@ export const InfoSection = () => {
       <Stack vertical fill>
         <Stack.Item grow basis={0}>
           <Section fill scrollable>
-            <Stack>
-              <Stack.Item>
+            <Grid>
+              <Grid.Column>
                 <BlockQuote>
                   You...
                   <br />
@@ -63,9 +64,9 @@ export const InfoSection = () => {
                     </div>
                   ))}
                 </BlockQuote>
-              </Stack.Item>
+              </Grid.Column>
               {!isTargetSelf ? (
-                <Stack.Item>
+                <Grid.Column>
                   <BlockQuote>
                     They...
                     <br />
@@ -76,9 +77,9 @@ export const InfoSection = () => {
                       </div>
                     ))}
                   </BlockQuote>
-                </Stack.Item>
+                </Grid.Column>
               ) : null}
-            </Stack>
+            </Grid>
           </Section>
         </Stack.Item>
         <Stack.Item>

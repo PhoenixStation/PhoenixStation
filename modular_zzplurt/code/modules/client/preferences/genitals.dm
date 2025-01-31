@@ -220,3 +220,12 @@
 
 /datum/preference/choiced/genital_fluid/vagina/create_default_value()
 	return /datum/reagent/consumable/femcum::name
+
+// Cumflation preferences
+/datum/preference/toggle/erp/cumflates_partners
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "cumflates_partners_pref"
+
+/datum/preference/toggle/erp/cumflates_partners/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return

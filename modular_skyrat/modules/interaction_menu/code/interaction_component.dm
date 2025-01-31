@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 /datum/component/interactable
 	/// A hard reference to the parent
-	var/mob/living/carbon/human/self = null
+	var/mob/living/self = null 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	/// A list of interactions that the user can engage in.
 	var/list/datum/interaction/interactions
 	var/interact_last = 0
@@ -46,6 +46,8 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		"belly_shrinkage_pref" = /datum/preference/toggle/erp/belly_shrinkage,
 		"forced_neverboner_pref" = /datum/preference/toggle/erp/forced_neverboner,
 		"custom_genital_fluids_pref" = /datum/preference/toggle/erp/custom_genital_fluids,
+		"cumflation_pref" = /datum/preference/toggle/erp/cumflation,
+		"cumflates_partners_pref" = /datum/preference/toggle/erp/cumflates_partners,
 		// Vore prefs
 		"vore_enable_pref" = /datum/preference/toggle/erp/vore_enable,
 		"vore_overlays" = /datum/preference/toggle/erp/vore_overlays,
@@ -60,20 +62,41 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		"extreme_harm" = /datum/preference/choiced/erp_status_extmharm,
 		"unholy_pref" = /datum/preference/choiced/erp_status_unholy
 	)
+	// SPLURT EDIT START - INTERACTIONS - A list of mobs that should be genderized
+	// A list of mobs that should be genderized.
+	var/static/list/should_be_genderized = typecacheof(list(
+		// /mob/living/basic/pet/cat // anuything soes here
+	))
+	// SPLURT EDIT END
 
 /datum/component/interactable/Initialize(...)
 	if(QDELETED(parent))
 		qdel(src)
 		return
 
-	if(!ishuman(parent))
+	if(!isliving(parent)) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 		return COMPONENT_INCOMPATIBLE
 
 	self = parent
 
-	add_verb(self, /mob/living/carbon/human/proc/interact_with)
+	add_verb(self, /mob/living/proc/interact_with) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 
 	build_interactions_list()
+
+	// SPLURT EDIT START - INTERACTIONS - Genderize mobs
+	if(is_type_in_typecache(parent, should_be_genderized))
+		var/mob/living/mob = parent
+		switch(mob.gender)
+			if(MALE)
+				mob.simulated_genitals[ORGAN_SLOT_PENIS] = TRUE
+			if(FEMALE)
+				mob.simulated_genitals[ORGAN_SLOT_VAGINA] = TRUE
+				mob.simulated_genitals[ORGAN_SLOT_BREASTS] = TRUE
+			if(PLURAL)
+				mob.simulated_genitals[ORGAN_SLOT_PENIS] = TRUE
+				mob.simulated_genitals[ORGAN_SLOT_VAGINA] = TRUE
+				mob.simulated_genitals[ORGAN_SLOT_BREASTS] = TRUE
+	// SPLURT EDIT END
 
 /datum/component/interactable/proc/build_interactions_list()
 	interactions = list()
@@ -84,7 +107,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		var/datum/interaction/interaction = SSinteractions.interactions[iterating_interaction_id]
 	//SPLURT EDIT CHANGE END
 		if(interaction.lewd)
-			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp) && !(!ishuman(self) && !self.client && !SSinteractions.is_blacklisted(self))) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 				continue
 			/*
 			SPLURT EDIT REMOVAL - Interactions
@@ -105,15 +128,15 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	return ..()
 
 /datum/component/interactable/proc/open_interaction_menu(datum/source, mob/user)
-	if(!ishuman(user))
+	if(!isliving(user)) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 		return
 	build_interactions_list()
 	ui_interact(user)
 
-/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
+/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/target) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	if(!interaction.allow_act(target, self))
 		return FALSE
-	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp) && !(!ishuman(target) && !target.client && !SSinteractions.is_blacklisted(target))) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 		return FALSE
 	if(!interaction.distance_allowed && !target.Adjacent(self))
 		return FALSE
@@ -127,20 +150,20 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 /datum/component/interactable/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		//SPLURT EDIT CHANGE BEGIN - UI INTERFACE - Changed UI interface name
+		//SPLURT EDIT CHANGE BEGIN - UI INTERFACE - New interaction menu interface
 		//ui = new(user, src, "Interactions") - SPLURT EDIT - ORIGINAL
 		ui = new(user, src, "MobInteraction")
 		//SPLURT EDIT CHANGE END
 		ui.open()
 
 /datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
-	if(!ishuman(user))
+	if(!isliving(user)) 		// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 		return UI_CLOSE
 
 	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
 
 /// Returns a list of interaction-relevant attributes for the given mob
-/datum/component/interactable/proc/get_interaction_attributes(mob/living/carbon/human/target)
+/datum/component/interactable/proc/get_interaction_attributes(mob/living/target) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	if(!istype(target))
 		return list()
 
@@ -149,7 +172,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	// Basic attributes
 	if(target.get_bodypart(BODY_ZONE_L_ARM) || target.get_bodypart(BODY_ZONE_R_ARM))
 		attributes += "have hands"
-	if(target.get_bodypart(BODY_ZONE_HEAD))
+	if(target.get_bodypart(BODY_ZONE_HEAD) || (!iscarbon(target) && target.simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_MOUTH]))
 		attributes += "have a mouth, which is [!target.is_mouth_covered() ? "covered" : "uncovered"]"
 
 	// Sexual exhaustion
@@ -209,7 +232,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 	return attributes
 
-/datum/component/interactable/ui_data(mob/user)
+/datum/component/interactable/ui_data(mob/living/user)  	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	var/list/data = list()
 	var/list/descriptions = list()
 	var/list/categories = list()
@@ -217,9 +240,10 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	var/list/colors = list()
 	var/list/additional_details = list()
 
-	var/mob/living/carbon/human/human_user = null
-	if(ishuman(user))
-		human_user = user
+	var/mob/living/carbon/human/human_user = user
+	var/mob/living/carbon/human/human_self = self
+
+	var/datum/component/interactable/user_interaction_component = user.GetComponent(/datum/component/interactable)
 
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
@@ -242,7 +266,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		display_categories += category
 	data["categories"] = sort_list(display_categories)
 	data["interactions"] = categories
-	data["block_interact"] = interact_next >= world.time
+	data["block_interact"] = user_interaction_component?.interact_next >= world.time
 
 	// User is always the one interacting, self is the target
 	data["favorite_interactions"] = user.client?.prefs?.read_preference(/datum/preference/blob/favorite_interactions) || list()
@@ -254,15 +278,17 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	data["isTargetSelf"] = (user == self)
 	data["interactingWith"] = user == self ? "Interacting with yourself..." : "Interacting with \the [self]..."
 
-	// Primary attributes (user's stats) - Only if user is human
-	if(human_user)
-		data["pleasure"] = human_user.pleasure || 0
-		data["maxPleasure"] = AROUSAL_LIMIT * (human_user.dna?.features["lust_tolerance"] || 1)
-		data["arousal"] = human_user.arousal || 0
+	// SPLURT EDIT START - INTERACTIONS - Any living mob should be interactable
+	// Primary attributes (user's stats)
+	if(user)
+		data["pleasure"] = user.pleasure || 0
+		data["maxPleasure"] = AROUSAL_LIMIT * (istype(human_user) ? human_user.dna.features["lust_tolerance"] || 1 : 1)
+		data["arousal"] = user.arousal || 0
 		data["maxArousal"] = AROUSAL_LIMIT
-		data["pain"] = human_user.pain || 0
+		data["pain"] = user.pain || 0
 		data["maxPain"] = AROUSAL_LIMIT
-		data["selfAttributes"] = get_interaction_attributes(human_user)
+		data["selfAttributes"] = get_interaction_attributes(user)
+	// SPLURT EDIT END
 	else
 		data["pleasure"] = 0
 		data["maxPleasure"] = AROUSAL_LIMIT
@@ -276,7 +302,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	if(user != self)
 		data["theirAttributes"] = get_interaction_attributes(self)
 		data["theirPleasure"] = self.pleasure || 0
-		data["theirMaxPleasure"] = AROUSAL_LIMIT * (self.dna.features["lust_tolerance"] || 1)
+		data["theirMaxPleasure"] = AROUSAL_LIMIT * (istype(human_self) ? human_self.dna.features["lust_tolerance"] || 1 : 1)
 		data["theirArousal"] = self.arousal || 0
 		data["theirMaxArousal"] = AROUSAL_LIMIT
 		data["theirPain"] = self.pain || 0
@@ -341,6 +367,8 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		data["belly_shrinkage_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/belly_shrinkage)
 		data["forced_neverboner_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/forced_neverboner)
 		data["custom_genital_fluids_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/custom_genital_fluids)
+		data["cumflation_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/cumflation)
+		data["cumflates_partners_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/cumflates_partners)
 
 		// Vore prefs
 		data["vore_enable_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable)
@@ -349,7 +377,9 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 	// Genital data - Only if user is human
 	var/list/genital_list = list()
-	if(human_user)
+	// SPLURT EDIT START - INTERACTIONS - Currently only humans may have genitalia
+	if(ishuman(user))
+	// SPLURT EDIT END
 		for(var/obj/item/organ/external/genital/genital in human_user.organs)
 			if(!genital.visibility_preference == GENITAL_SKIP_VISIBILITY)
 				var/list/genital_data = list(
@@ -361,6 +391,14 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 					"always_accessible" = genital.always_accessible
 				)
 				genital_list += list(genital_data)
+	else
+		for(var/organ in user.simulated_genitals)
+			var/list/genital_data = list(
+				"name" = organ,
+				"active" = user.simulated_genitals[organ],
+				"is_simple" = TRUE  // New flag to indicate simple active/inactive display
+			)
+			genital_list += list(genital_data)
 	data["genitals"] = genital_list
 
 	// Lewd items - Show target's (self's) lewd slots for user to interact with
@@ -368,12 +406,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	if(ishuman(user) && can_lewd_strip(user, self))
 		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			if(self.has_vagina())
-				parts += list(generate_strip_entry(ORGAN_SLOT_VAGINA, self, user, self.vagina))
+				parts += list(generate_strip_entry(ORGAN_SLOT_VAGINA, self, user, human_self.vagina))
 			if(self.has_penis())
-				parts += list(generate_strip_entry(ORGAN_SLOT_PENIS, self, user, self.penis))
+				parts += list(generate_strip_entry(ORGAN_SLOT_PENIS, self, user, human_self.penis))
 			if(self.has_anus())
-				parts += list(generate_strip_entry(ORGAN_SLOT_ANUS, self, user, self.anus))
-			parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, self.nipples))
+				parts += list(generate_strip_entry(ORGAN_SLOT_ANUS, self, user, human_self.anus))
+			parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, human_self.nipples))
 
 	data["lewd_slots"] = parts
 
@@ -407,17 +445,17 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	if(.)
 		return
 
-	if(!ishuman(usr))
+	if(!isliving(usr)) 		// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 		return
 
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/user = usr 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	var/datum/preferences/prefs = user.client?.prefs
 
 	switch(action)
 		if("interact")
 			var/interaction_id = params["interaction"]
-			var/mob/living/carbon/human/source = locate(params["userref"])
-			var/mob/living/carbon/human/target = locate(params["selfref"])
+			var/mob/living/source = locate(params["userref"]) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
+			var/mob/living/target = locate(params["selfref"]) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 			if(!interaction_id || !source || !target)
 				return FALSE
 
@@ -440,8 +478,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			selected_interaction.act(source, target)
 			var/datum/component/interactable/interaction_component = source.GetComponent(/datum/component/interactable)
 			interaction_component.interact_last = world.time
-			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
-			interaction_component.interact_next = interact_next
+			interaction_component.interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
 			return TRUE
 
 		if("favorite")
@@ -497,7 +534,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			var/item_index = params["item_slot"]
 			var/mob/living/carbon/human/source = locate(params["userref"])
 			var/mob/living/carbon/human/target = locate(params["selfref"])
-			if(!source || !target)
+			if(!source || !istype(target))
 				return FALSE
 
 			var/obj/item/clothing/sextoy/new_item = source.get_active_held_item()
@@ -546,6 +583,8 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			return TRUE
 
 		if("toggle_genital_visibility")
+			if(!ishuman(user))
+				return FALSE
 			var/obj/item/organ/external/genital/genital = user.get_organ_slot(params["genital"])
 			if(!genital || !istype(genital))
 				return FALSE
@@ -559,6 +598,8 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			return TRUE
 
 		if("toggle_genital_arousal")
+			if(!ishuman(user))
+				return FALSE
 			var/obj/item/organ/external/genital/genital = user.get_organ_slot(params["genital"])
 			if(!genital || !istype(genital) || genital.aroused == AROUSAL_CANT)
 				return FALSE
@@ -573,11 +614,22 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			return TRUE
 
 		if("toggle_genital_accessibility")
+			if(!ishuman(user))
+				return FALSE
 			var/obj/item/organ/external/genital/genital = user.get_organ_slot(params["genital"])
 			if(!genital || !istype(genital))
 				return FALSE
 
 			genital.always_accessible = !genital.always_accessible
+			return TRUE
+
+		if("toggle_genital_active")
+			if(ishuman(user))
+				return FALSE
+			var/genital_name = params["genital"]
+			if(!genital_name)
+				return FALSE
+			user.simulated_genitals[genital_name] = !user.simulated_genitals[genital_name]
 			return TRUE
 
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
@@ -625,7 +677,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		else
 			return FALSE
 
-/mob/living/carbon/human/proc/interact_with()
+/mob/living/proc/interact_with() 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	set name = "Interact With"
 	set desc = "Perform an interaction with someone."
 	set category = "IC"
