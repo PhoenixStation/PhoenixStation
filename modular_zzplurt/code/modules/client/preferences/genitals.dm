@@ -59,13 +59,10 @@
 
 
 //butthole
-/datum/preference/choiced/genital/anus
-	savefile_key = "feature_anus"
-	relevant_mutant_bodypart = ORGAN_SLOT_ANUS
-	default_accessory_type = /datum/sprite_accessory/genital/anus/none
-
-/datum/preference/choiced/genital/anus/is_accessible(datum/preferences/preferences)
-	return ..() && preferences.read_preference(/datum/preference/choiced/genital/butt) != "None"
+/datum/preference/choiced/genital/anus/deserialize(input, datum/preferences/preferences)
+	if(preferences.read_preference(/datum/preference/choiced/genital/butt) == SPRITE_ACCESSORY_NONE && input != SPRITE_ACCESSORY_NONE)
+		return /datum/sprite_accessory/genital/anus/normal::name
+	. = ..()
 
 /datum/preference/toggle/genital_skin_tone/anus
 	savefile_key = "anus_skin_tone"
@@ -99,8 +96,7 @@
 	type_to_check = /datum/preference/choiced/genital/anus
 	skin_color_type = /datum/preference/toggle/genital_skin_color/anus
 
-//SPLURT EDIT START
-// BELLY (yes it HAS to be here)
+// BELLY
 /datum/preference/choiced/genital/belly
 	savefile_key = "feature_belly"
 	relevant_mutant_bodypart = ORGAN_SLOT_BELLY
@@ -111,8 +107,8 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "belly_size"
 	relevant_mutant_bodypart = ORGAN_SLOT_BELLY
-	minimum = 1
-	maximum = 10
+	minimum = BELLY_MIN_SIZE
+	maximum = BELLY_MAX_SIZE
 
 /datum/preference/numeric/belly_size/create_default_value()
 	return 1
@@ -159,7 +155,6 @@
 	relevant_mutant_bodypart = ORGAN_SLOT_BELLY
 	type_to_check = /datum/preference/choiced/genital/belly
 	skin_color_type = /datum/preference/toggle/genital_skin_color/belly
-//SPLURT EDIT END
 
 // Genital fluid preferences base type
 /datum/preference/choiced/genital_fluid

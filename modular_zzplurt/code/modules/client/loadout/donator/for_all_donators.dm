@@ -3,9 +3,9 @@
 
 //Misc
 
-// /datum/loadout_item/inhand/donator/portallight
-// 	name = "Portal Fleshlight and Underwear"
-// 	item_path = /obj/item/storage/box/portallight
+/datum/loadout_item/inhand/donator/portal_fleshlight
+	name = "Portal Fleshlight and Underwear"
+	item_path = /obj/item/storage/box/portal_fleshlight
 
 //Backpack
 /datum/loadout_item/inhand/donator/backpack/crocinpen

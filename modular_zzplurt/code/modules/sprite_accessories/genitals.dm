@@ -22,24 +22,24 @@
 
 /datum/sprite_accessory/genital/anus
 	icon = 'modular_zzplurt/icons/mob/human/genitals/anus.dmi'
-	organ_type = /obj/item/organ/external/genital/anus
-	associated_organ_slot = ORGAN_SLOT_BUTT // :3
-	key = ORGAN_SLOT_ANUS
 	color_src = USE_MATRIXED_COLORS
 	has_skintone_shading = TRUE
 	always_color_customizable = TRUE
 	relevent_layers = list(BODY_FRONT_LAYER)
-	genetic = TRUE
 
-/datum/sprite_accessory/genital/anus/normal
+/datum/sprite_accessory/genital/anus/is_hidden(mob/living/carbon/human/target_mob)
+	//TODO: make this check use the butt sprite accessory just for good measure
+	if(!target_mob.has_butt(REQUIRE_GENITAL_EXPOSED))
+		return TRUE
+	. = ..()
+
+/datum/sprite_accessory/genital/anus/donut
 	icon_state = "donut"
-	color_src = USE_MATRIXED_COLORS
 	name = "Donut"
 
 /datum/sprite_accessory/genital/anus/squished
 	icon_state = "squished"
 	name = "Squished"
-	color_src = USE_MATRIXED_COLORS
 
 
 /datum/sprite_accessory/genital/belly
