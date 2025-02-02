@@ -569,6 +569,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 					if(existing_item)
 						source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
 						target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
+						source.put_in_hands(existing_item, forced = TRUE) // SPLURT EDIT - puts it in the source's hands, it still needs to be dropped for specific sextoy behavior
 						target.vars[item_index] = null
 					else if (new_item)
 						source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)

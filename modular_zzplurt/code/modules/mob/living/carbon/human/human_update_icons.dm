@@ -25,7 +25,7 @@
 		var/atom/movable/screen/inventory/inv = hud_used.extra_inventory[UNDERWEAR_INDEX]
 		inv.update_icon()
 
-	if(istype(w_underwear, /obj/item/clothing/underwear/briefs))
+	if(w_underwear)
 		var/obj/item/clothing/underwear/briefs/undies = w_underwear
 		update_hud_underwear(undies)
 
@@ -41,7 +41,7 @@
 		var/handled_by_bodyshape = TRUE
 		var/digi
 		var/woman
-		var/female_sprite_flags = w_underwear.female_sprite_flags
+		var/female_sprite_flags = istype(undies) ? undies.female_sprite_flags : NONE
 		var/mutant_styles = NONE
 		if((bodyshape & BODYSHAPE_DIGITIGRADE) && (undies.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = undies.worn_icon_digi || DIGITIGRADE_UNDERWEAR_FILE

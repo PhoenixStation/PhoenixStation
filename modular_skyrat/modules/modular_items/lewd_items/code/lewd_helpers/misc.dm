@@ -52,7 +52,7 @@
 		pixel_z = pseudo_z_axis
 
 /// Used to add a cum decal to the floor while transferring viruses and DNA to it
-/mob/living/proc/add_cum_splatter_floor(turf/the_turf, female = FALSE)
+/mob/living/proc/add_cum_splatter_floor(turf/the_turf, female = FALSE, datum/reagent/cum_reagent) //SPLURT EDIT CHANGE - Cum Splatter - Original: /mob/living/proc/add_cum_splatter_floor(turf/the_turf, female = FALSE)
 	if(!the_turf)
 		the_turf = get_turf(src)
 
@@ -60,3 +60,8 @@
 	var/atom/stain = new selected_type(the_turf, get_static_viruses())
 
 	stain.transfer_mob_blood_dna(src) //I'm not adding a new forensics category for cumstains
+
+	//SPLURT EDIT ADDITION BEGIN - Cum Splatter
+	if(cum_reagent && !ispath(cum_reagent, /datum/reagent/consumable/cum) && !ispath(cum_reagent, /datum/reagent/consumable/femcum))
+		stain.color = initial(cum_reagent.color)
+	//SPLURT EDIT ADDITION END

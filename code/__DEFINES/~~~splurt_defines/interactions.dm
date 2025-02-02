@@ -25,20 +25,10 @@
 #define INTERACTION_REQUIRE_SELF_HUMAN "self_human"
 #define INTERACTION_REQUIRE_TARGET_HUMAN "target_human"
 
-/// Climax definitions
+// Interaction configs
 
-//Climaxing genitals
-#define CLIMAX_VAGINA "vagina"
-#define CLIMAX_PENIS "penis"
-#define CLIMAX_BOTH "both"
-
-//Climaxing positions
-#define CLIMAX_POSITION_USER "climax_user"
-#define CLIMAX_POSITION_TARGET "climax_target"
-
-//Climaxing targets (use these if you're not using organ slots)
-#define CLIMAX_TARGET_MOUTH "mouth"
-#define CLIMAX_TARGET_SHEATH "sheath"
+// Interaction Types: Do we do it to ourself or someone else
+#define INTERACTION_BOTH "both"
 
 // Extreme types
 #define INTERACTION_EXTREME (1<<0)
@@ -60,3 +50,18 @@
 
 // Interaction flags (used for logic but normally not sent to the interaction menu)
 #define INTERACTION_OVERRIDE_FLUID_TRANSFER (1<<0)
+
+/// Climax definitions
+
+//Climaxing genitals
+#define CLIMAX_VAGINA "vagina"
+#define CLIMAX_PENIS "penis"
+#define CLIMAX_BOTH "both"
+
+//Climaxing positions
+#define CLIMAX_POSITION_USER "climax_user"
+#define CLIMAX_POSITION_TARGET "climax_target"
+
+//Climaxing targets (use these if you're not using organ slots)
+#define CLIMAX_TARGET_MOUTH "mouth"
+#define CLIMAX_TARGET_SHEATH "sheath"

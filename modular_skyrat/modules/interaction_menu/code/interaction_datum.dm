@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		user.adjust_pleasure(user_pleasure * (istype(human_user) ? human_user.dna.features["sexual_potency"] || 1 : 1), target, src, CLIMAX_POSITION_USER) //SPLURT EDIT - Interactions
 		user.adjust_arousal(user_arousal)
 		user.adjust_pain(user_pain, target, src, CLIMAX_POSITION_USER) //SPLURT EDIT - Interactions
-		if(usage == INTERACTION_OTHER) //SPLURT EDIT - Interactions
+		if(user != target) //SPLURT EDIT - Interactions
 			target.adjust_pleasure(target_pleasure * (istype(human_target) ? human_target.dna.features["sexual_potency"] || 1 : 1), user, src, CLIMAX_POSITION_TARGET) //SPLURT EDIT - Interactions
 			target.adjust_arousal(target_arousal)
 			target.adjust_pain(target_pain, user, src, CLIMAX_POSITION_TARGET) //SPLURT EDIT - Interactions

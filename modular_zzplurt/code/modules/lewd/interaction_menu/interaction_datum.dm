@@ -109,6 +109,18 @@
 	WRITE_FILE(file, json_encode(json))
 	return TRUE
 
+/datum/interaction/act(mob/living/user, mob/living/target)
+	if(user == target && usage == INTERACTION_BOTH)
+		user_pleasure += target_pleasure
+		user_arousal += target_arousal
+		user_pain += target_pain
+
+	. = ..()
+
+	if(user == target && usage == INTERACTION_BOTH)
+		user_pleasure -= target_pleasure
+		user_arousal -= target_arousal
+		user_pain -= target_pain
 
 /datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target == user && usage == INTERACTION_OTHER)
@@ -231,7 +243,7 @@
 
 // Called when either the user or target is cumming from the interaction, makes the interaction text
 /datum/interaction/proc/show_climax(mob/living/cumming, mob/living/came_in, position)
-	var/override_check = length(cum_message_text_overrides[position]) && length(cum_self_text_overrides[position]) && (length(cum_partner_text_overrides[position]) || usage == INTERACTION_SELF)
+	var/override_check = length(cum_message_text_overrides[position]) && length(cum_self_text_overrides[position]) && (length(cum_partner_text_overrides[position]) || cumming == came_in)
 	if(!override_check)
 		return FALSE
 
@@ -265,7 +277,7 @@
 
 		cumming.visible_message(span_userlove(message), span_userlove(self_message))
 
-		if(usage == INTERACTION_OTHER)
+		if(cumming != came_in)
 			var/partner_message = pick(cum_partner_text_overrides[position])
 			partner_message = replacetext(partner_message, "%CUMMING%", "[cumming]")
 			partner_message = replacetext(partner_message, "%CUMMING_THEIR%", "[cumming_their]")

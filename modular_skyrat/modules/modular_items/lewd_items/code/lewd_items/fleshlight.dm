@@ -73,7 +73,7 @@
 
 	var/message = (user == target) ? pick("moans in ecstasy as [target.p_they()] fuck the [src]",
 			"slowly moves [src] up and down on [target]'s penis, causing [target.p_them()] to bend in pleasure",
-			"shivers in pleasure as [target.p_they()] move [src] on their penis") \
+			"shivers in pleasure as [target.p_they()] move[target.p_s()] [src] on [target.p_their()] penis") \
 		: pick("uses [src] on [target]'s penis",
 			"fucks [target] with [src]",
 			"masturbates [target] with [src], causing [target.p_them()] to moan in ecstasy")

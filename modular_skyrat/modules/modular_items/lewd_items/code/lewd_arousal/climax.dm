@@ -179,7 +179,7 @@
 						qdel(R)
 					else
 						testicles.transfer_internal_fluid(null, testicles.internal_fluid_count * 0.6)
-						add_cum_splatter_floor(get_turf(src))
+						add_cum_splatter_floor(get_turf(src), cum_reagent = testicles.internal_fluid_datum)
 				else if(partner || interactable_inrange_mobs[target_choice])
 					// Transfer reagents directly to partner
 					var/mob/living/target_mob = partner || interactable_inrange_mobs[target_choice]
@@ -309,7 +309,7 @@
 						qdel(R)
 					else
 						vagina.transfer_internal_fluid(null, vagina.internal_fluid_count)
-						add_cum_splatter_floor(get_turf(src), female = TRUE)
+						add_cum_splatter_floor(get_turf(src), female = TRUE, cum_reagent = vagina.internal_fluid_datum)
 				else if(partner || interactable_inrange_mobs[target_choice])
 					var/mob/living/target_mob = partner || interactable_inrange_mobs[target_choice]
 
