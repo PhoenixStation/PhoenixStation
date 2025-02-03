@@ -246,6 +246,18 @@
 				addclientmessage(ckey,span_adminnotice("You have been allowed to bypass a matching host/sticky ban on [bannedckey]"))
 			return null
 
+		// check whitelist for stickybans
+		if(SSdbcore.Connect())
+			var/datum/db_query/query_check_whitelist_stickyban = SSdbcore.NewQuery(
+				"SELECT 1 FROM [format_table_name("whitelist_stickyban")] WHERE ckey = :ckey",
+				list("ckey" = ckey)
+			)
+			if(query_check_whitelist_stickyban.Execute())
+				if(query_check_whitelist_stickyban.NextRow())
+					qdel(query_check_whitelist_stickyban)
+					return null // user in whitelist, allow access
+			qdel(query_check_whitelist_stickyban)
+
 		if (C) //user is already connected!.
 			to_chat(C, span_redtext("You are about to get disconnected for matching a sticky ban after you connected. If this turns out to be the ban evasion detection system going haywire, we will automatically detect this and revert the matches. if you feel that this is the case, please wait EXACTLY 6 seconds then reconnect using file -> reconnect to see if the match was automatically reversed."), confidential = TRUE)
 
