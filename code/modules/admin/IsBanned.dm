@@ -249,7 +249,7 @@
 		// check whitelist for stickybans
 		if(SSdbcore.Connect())
 			var/datum/db_query/query_check_whitelist_stickyban = SSdbcore.NewQuery(
-				"SELECT 1 FROM [format_table_name("whitelist_stickyban")] WHERE ckey = :ckey",
+				"SELECT 1 FROM [format_table_name("whitelist_stickyban")] WHERE LOWER(REPLACE(ckey, ' ', '')) = :ckey",
 				list("ckey" = ckey)
 			)
 			if(query_check_whitelist_stickyban.Execute())
