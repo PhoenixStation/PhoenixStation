@@ -3,8 +3,8 @@
 #undef BODY_SIZE_MAX
 #undef BODY_SIZE_MIN
 
-#define BODY_SIZE_MAX 2.0
-#define BODY_SIZE_MIN 0.1
+#define BODY_SIZE_MAX 1.5 // PHOENIX EDIT: Descreased body size max to 1.5
+#define BODY_SIZE_MIN 0.7 // PHOENIX EDIT: Increased body size min to 0.7
 
 //genitals
 #undef TESTICLES_MAX_SIZE

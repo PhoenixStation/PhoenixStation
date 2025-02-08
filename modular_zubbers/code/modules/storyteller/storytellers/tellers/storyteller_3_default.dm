@@ -5,3 +5,4 @@
 	welcome_text = "If I chopped you up in a meat grinder..."
 	antag_divisor = 8
 	storyteller_type = STORYTELLER_TYPE_ALWAYS_AVAILABLE
+	population_min = 25 // PHOENIX EDIT: Increased population min to 25
