@@ -246,6 +246,7 @@
 				addclientmessage(ckey,span_adminnotice("You have been allowed to bypass a matching host/sticky ban on [bannedckey]"))
 			return null
 
+		// PHOENIX EDIT START: Stickyban Whitelist Check
 		// check whitelist for stickybans
 		if(SSdbcore.Connect())
 			var/datum/db_query/query_check_whitelist_stickyban = SSdbcore.NewQuery(
@@ -257,6 +258,7 @@
 					qdel(query_check_whitelist_stickyban)
 					return null // user in whitelist, allow access
 			qdel(query_check_whitelist_stickyban)
+		// PHOENIX EDIT END: Stickyban Whitelist Check
 
 		if (C) //user is already connected!.
 			to_chat(C, span_redtext("You are about to get disconnected for matching a sticky ban after you connected. If this turns out to be the ban evasion detection system going haywire, we will automatically detect this and revert the matches. if you feel that this is the case, please wait EXACTLY 6 seconds then reconnect using file -> reconnect to see if the match was automatically reversed."), confidential = TRUE)
