@@ -1,0 +1,4 @@
+author: "usernameasterisk"
+delete-after: True
+changes:
+  - bugfix: "both normal legs and digitigrade legs are now available for xeno species"
