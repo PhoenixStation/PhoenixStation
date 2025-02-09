@@ -8722,6 +8722,7 @@
 #include "modular_zubbers\code\datums\components\vore\belly.dm"
 #include "modular_zubbers\code\datums\components\vore\belly_messages.dm"
 #include "modular_zubbers\code\datums\components\vore\belly_serde.dm"
+#include "modular_zubbers\code\datums\components\vore\configs.dm"
 #include "modular_zubbers\code\datums\components\vore\digest_modes.dm"
 #include "modular_zubbers\code\datums\components\vore\preferences.dm"
 #include "modular_zubbers\code\datums\components\vore\subsystem.dm"
@@ -9815,5 +9816,6 @@
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
 #include "modular_zzzphoenix\code\modules\admin\whitelist.dm"
 #include "modular_zzzphoenix\code\modules\alternative_job_titles\alt_job_titles.dm"
+#include "modular_zzzphoenix\code\modules\species\xeno.dm"
 // END_INCLUDE
 
