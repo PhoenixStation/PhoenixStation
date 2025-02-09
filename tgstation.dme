@@ -9814,5 +9814,6 @@
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
 #include "modular_zzzphoenix\code\modules\admin\whitelist.dm"
+#include "modular_zzzphoenix\code\modules\alternative_job_titles\alt_job_titles.dm"
 // END_INCLUDE
 
