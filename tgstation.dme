@@ -9634,6 +9634,8 @@
 #include "modular_zzplurt\code\modules\clothing\underwear\~generated_files\socks_edits.dm"
 #include "modular_zzplurt\code\modules\clothing\wrists\_wrists.dm"
 #include "modular_zzplurt\code\modules\clothing\wrists\watches.dm"
+#include "modular_zzplurt\code\modules\colormate\color_matrix.dm"
+#include "modular_zzplurt\code\modules\colormate\colormate.dm"
 #include "modular_zzplurt\code\modules\customization\modules\mob\living\carbon\human\species\hemophage\corrupted_tongue.dm"
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\32x64ears.dm"
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\64x32horns.dm"
