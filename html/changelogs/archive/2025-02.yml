@@ -87,3 +87,13 @@
   ABoxFaux:
   - balance: Slimepeople with the nitrogen breather quirk now no longer take toxin
       damage from breathing oxygen, instead taking an equal amount of brute damage.
+2025-02-09:
+  Phoenix4O4:
+  - rscadd: Added gear painters
+2025-02-10:
+  Phoenix4O4:
+  - rscadd: Added new Ash Plates Armor
+  - rscadd: Added Cauldron
+  - rscadd: Introduced Gunther chickens - special lava-resistant variant
+  - rscadd: Added primitive Ash Chisel tool
+  - map: Ported Ash Fortress from Nova Sector codebase
