@@ -5843,14 +5843,6 @@
 /obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/starboard)
-"bEH" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "AI Core shutters";
-	name = "AI Core Shutters"
-	},
-/turf/open/floor/plating,
-/area/station/ai_monitored/turret_protected/ai)
 "bEN" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/structure/sign/warning/secure_area/directional/north,
@@ -28056,14 +28048,6 @@
 /obj/structure/ore_box,
 /turf/open/floor/plating,
 /area/station/maintenance/department/public_mining)
-"hHD" = (
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 8
-	},
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/obj/machinery/time_clock/directional/west,
-/turf/open/floor/iron/showroomfloor,
-/area/station/terminal/cryo)
 "hHF" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
 	dir = 6
@@ -29138,6 +29122,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/storage_shared)
+"hYM" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/tile/holiday/rainbow/half/contrasted,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/dark/corner,
+/area/station/common/pool)
 "hYS" = (
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 1
@@ -40919,13 +40910,6 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
-"lkQ" = (
-/obj/machinery/computer/cryopod/directional/east,
-/obj/machinery/time_clock/directional/south,
-/obj/effect/turf_decal/tile/green/anticorner/contrasted,
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/showroomfloor,
-/area/station/common/cryopods/aux)
 "lkU" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/basic/bot/firebot,
@@ -54982,6 +54966,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/security/range)
+"pdE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "AI Core shutters";
+	name = "AI Core Shutters"
+	},
+/turf/open/floor/plating,
+/area/station/ai_monitored/turret_protected/ai)
 "pdG" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/engineering/toolbox,
@@ -58124,6 +58116,14 @@
 /obj/effect/turf_decal/tile/yellow/half/contrasted,
 /turf/open/floor/iron/dark/corner,
 /area/station/commons/storage/primary)
+"pWx" = (
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 8
+	},
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/obj/machinery/modular_computer/preset/time_clock/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/station/terminal/cryo)
 "pWN" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -59298,6 +59298,13 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/plating,
 /area/station/commons/public_mining)
+"qlV" = (
+/obj/machinery/computer/cryopod/directional/east,
+/obj/machinery/modular_computer/preset/time_clock/directional/south,
+/obj/effect/turf_decal/tile/green/anticorner/contrasted,
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/showroomfloor,
+/area/station/common/cryopods)
 "qmb" = (
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 8
@@ -61755,13 +61762,6 @@
 /obj/machinery/light/small/red/dim/directional/east,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/ai_monitored/turret_protected/aisat/maint)
-"qXp" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/effect/turf_decal/tile/holiday/rainbow/half/contrasted,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/fans/tiny,
-/turf/open/floor/iron/dark/corner,
-/area/station/common/pool)
 "qXq" = (
 /obj/effect/turf_decal/tile/dark_green/diagonal_centre,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -72205,21 +72205,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
-"tQU" = (
-/obj/effect/turf_decal/tile/holiday/rainbow/half/contrasted{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/machinery/time_clock/directional/north,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/corner{
-	dir = 1
-	},
-/area/station/commons/dorms)
 "tQV" = (
 /obj/effect/turf_decal/weather/snow,
 /obj/effect/turf_decal/weather/snow/corner{
@@ -72893,13 +72878,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/tcommsat/computer)
-"uaR" = (
-/obj/machinery/computer/cryopod/directional/east,
-/obj/machinery/time_clock/directional/south,
-/obj/effect/turf_decal/tile/green/anticorner/contrasted,
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/showroomfloor,
-/area/station/common/cryopods)
 "uaT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/large,
@@ -76015,6 +75993,16 @@
 /obj/machinery/light/moonstation/directional/west,
 /turf/open/floor/iron/checker,
 /area/station/cargo/blacksmith)
+"uVd" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/obj/machinery/modular_computer/preset/time_clock/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/corner{
+	dir = 1
+	},
+/area/station/hallway/secondary/recreation)
 "uVi" = (
 /obj/machinery/door/airlock{
 	name = "Starboard Emergency Storage"
@@ -76529,16 +76517,6 @@
 	},
 /turf/open/misc/moonstation_rock,
 /area/moonstation/underground)
-"vdr" = (
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 8
-	},
-/obj/machinery/time_clock/directional/west,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark/corner{
-	dir = 1
-	},
-/area/station/hallway/secondary/recreation)
 "vdC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -77558,6 +77536,21 @@
 	dir = 1
 	},
 /area/station/common/wrestling/arena)
+"vqZ" = (
+/obj/effect/turf_decal/tile/holiday/rainbow/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/modular_computer/preset/time_clock/directional/north,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/corner{
+	dir = 1
+	},
+/area/station/commons/dorms)
 "vra" = (
 /obj/effect/turf_decal/tile/purple/diagonal_centre,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -83830,6 +83823,13 @@
 /obj/structure/stone_tile/surrounding_tile/cracked,
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
+"xgB" = (
+/obj/machinery/computer/cryopod/directional/east,
+/obj/machinery/modular_computer/preset/time_clock/directional/south,
+/obj/effect/turf_decal/tile/green/anticorner/contrasted,
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/showroomfloor,
+/area/station/common/cryopods/aux)
 "xgJ" = (
 /obj/machinery/door/airlock/research{
 	name = "Circuit Testing Lab"
@@ -222971,7 +222971,7 @@ jkI
 mbQ
 eNr
 dpe
-hHD
+pWx
 cdh
 hRF
 hjb
@@ -238950,7 +238950,7 @@ tis
 tis
 xTd
 wTv
-qXp
+hYM
 lRS
 qWH
 xrF
@@ -240737,7 +240737,7 @@ oKD
 oKD
 oKD
 afw
-vdr
+uVd
 oKD
 vVQ
 oKD
@@ -241266,7 +241266,7 @@ uCH
 fkF
 lQh
 tvO
-uaR
+qlV
 hCV
 iCO
 qaN
@@ -248647,8 +248647,8 @@ rPu
 kTm
 nSC
 nSC
-bEH
-bEH
+pdE
+pdE
 mYk
 tpx
 lZT
@@ -249675,8 +249675,8 @@ qns
 cfB
 emg
 dbk
-bEH
-bEH
+pdE
+pdE
 mYk
 soJ
 ykM
@@ -271843,7 +271843,7 @@ jgX
 jgX
 jgX
 qQG
-tQU
+vqZ
 pNH
 skV
 lZD
@@ -274675,7 +274675,7 @@ rfj
 qir
 uIY
 uMA
-lkQ
+xgB
 lRU
 lRU
 oir
