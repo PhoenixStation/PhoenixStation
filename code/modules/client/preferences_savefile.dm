@@ -25,7 +25,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 */
 /datum/preferences/proc/save_data_needs_update(list/save_data)
 	if(!save_data) // empty list, either savefile isnt loaded or its a new char
-		return -2 // SPLURT EDIT
+		return -3 // SPLURT EDIT
 	if(save_data["version"] < SAVEFILE_VERSION_MIN)
 		return -2
 	if(save_data["version"] < SAVEFILE_VERSION_MAX)
@@ -333,7 +333,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	custom_emote_panel = SANITIZE_LIST(custom_emote_panel)
 	// SPLURT EDIT END: CUSTOM EMOTE PANEL
 
-	return TRUE
+	return needs_update != -3 // SPLURT EDIT
 
 /datum/preferences/proc/save_character(update) // Skyrat edit - Choose when to update (This is stupid)
 	SHOULD_NOT_SLEEP(TRUE)
