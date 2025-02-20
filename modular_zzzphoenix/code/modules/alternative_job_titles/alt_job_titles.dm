@@ -29,7 +29,6 @@
 /datum/job/head_of_security/New()
 	var/list/extra_titles = list(
 		"Division Leader",
-		"Cerberus Leader",
 		"Big Iron",
 		"Commissar"
 	)
@@ -72,7 +71,6 @@
 		"Astromechanic",
 		"Station Architect",
 		"Hazardous Material Operator",
-		"Junior Engineer",
 		"Response Engineer",
 		"Maintenance Specialist"
 	)
@@ -163,8 +161,6 @@
 	var/list/extra_titles = list(
 		"Researcher",
 		"Toxins Researcher",
-		"Research Intern",
-		"Junior Scientist",
 		"Nanite Programmer",
 		"Tetromino Researcher",
 		"Xenoarchaeologist"
@@ -192,7 +188,6 @@
 
 /datum/job/doctor/New()
 	var/list/extra_titles = list(
-		"Medical Intern",
 		"Medical Resident",
 		"Medtech"
 	)
@@ -239,8 +234,7 @@
 	var/list/extra_titles = list(
 		"Security Agent",
 		"Probation Officer",
-		"Guardsman",
-		"Cerberus"
+		"Guardsman"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
