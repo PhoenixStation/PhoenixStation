@@ -1,0 +1,44 @@
+title: "Rebase Feature Addition Request"
+labels: ["rebase-feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to request a feature from our previous codebase to be added to the rebase!
+
+        Please ensure this is about content that exists in our previous codebase but is missing in the rebase.
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      description: Please ensure you've checked the following before submitting
+      options:
+        - label: This feature exists in our previous codebase but is missing in the rebase
+          required: true
+        - label: This is not about tweaking existing rebase content
+          required: true
+  - type: textarea
+    id: about-feature
+    attributes:
+      label: About the Feature
+      description: Provide general information about the feature you want ported and why
+      placeholder: |
+        Please include:
+        - What is this feature?
+        - Why should it be ported?
+        - How would it benefit the codebase?
+    validations:
+      required: true
+  - type: textarea
+    id: content-to-port
+    attributes:
+      label: Content to Port
+      description: Describe the content from our previous codebase that needs to be ported
+      placeholder: |
+        Please include:
+        - Location in old codebase (file paths, class paths, text, images, urls, etc.)
+        - How the feature works/behaves
+        - Screenshots/videos if applicable
+        - Any relevant code snippets
+        - Any specific implementation details you'd like to see maintained
+    validations:
+      required: true

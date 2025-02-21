@@ -16,7 +16,7 @@
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 		if(GET_ATOM_BLOOD_DNA_LENGTH(src))
-			. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+			. += mutable_appearance(colored_blood_icon('icons/effects/blood.dmi'), "maskblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 
 /obj/item/clothing/neck/bowtie
 	name = "bow tie"

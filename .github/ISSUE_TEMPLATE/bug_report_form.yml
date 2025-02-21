@@ -31,6 +31,27 @@ body:
         "X on Y map has Z issue."
     validations:
       required: true
+  # SPLURT EDIT: Section to help us locate the source of the issue in the codebase.
+  - type: textarea
+    id: issue-tracing
+    attributes:
+      label: "Issue Tracing Information:"
+      description: |
+        Provide any information that could help us locate the source of the issue in the codebase.
+        This can include file paths, class paths, object references, or any other relevant details.
+      placeholder: |
+        Please include any of the following that might help:
+        - File paths where you think the issue might be
+        - Class paths of objects involved
+        - Screenshots showing the objects or UI elements
+        - Links to relevant code
+        - Object references from the game (right-click -> View Variables)
+        - Any error messages or logs
+
+        You can attach images by dragging & dropping them here.
+    validations:
+      required: false
+  # SPLURT EDIT END
   - type: input
     id: round-id
     attributes:

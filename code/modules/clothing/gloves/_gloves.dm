@@ -52,7 +52,7 @@
 	if(damaged_clothes)
 		. += mutable_appearance('icons/effects/item_damage.dmi', "damagedgloves")
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
-		. += mutable_appearance('icons/effects/blood.dmi', "gloveblood")
+		. += mutable_appearance(colored_blood_icon('icons/effects/blood.dmi'), "gloveblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 
 /obj/item/clothing/gloves/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()
