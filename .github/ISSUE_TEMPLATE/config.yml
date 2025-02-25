@@ -1,4 +1,7 @@
 contact_links:
-  - name: Feature Requests
-    url: https://github.com/Skyrat-SS13/Skyrat-tg/discussions
-    about: Post feature requests and suggestions on the repository, a maintainer will look over them.
+  - name: Rebase Suggestions
+    url: https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/discussions
+    about: Post suggestions or tweak requests for us to look through while the rebase process is ongoing. This section will be used until we officially rebase.
+  - name: Suggestions and Suggestion bounties
+    url: https://discord.gg/wynHVMzHzC
+    about: Post suggestions for us to apply onto our station, which could be considered for the suggestions bounty system.

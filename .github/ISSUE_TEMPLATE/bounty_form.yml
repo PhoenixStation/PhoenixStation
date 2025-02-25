@@ -1,0 +1,76 @@
+name: "Bounty Submission"
+description: "Create a new bounty for implementing features or content"
+title: "[BOUNTY]"
+labels: ["bounty"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for creating a bounty! This form will help you structure your bounty request properly.
+
+        Please ensure you provide clear and detailed information to help developers understand the requirements.
+
+  - type: textarea
+    id: about-bounty
+    attributes:
+      label: About the Bounty
+      description: Provide detailed information about what needs to be implemented for this bounty
+      placeholder: |
+        Please include:
+        - Detailed description of what needs to be implemented
+        - Any specific requirements or constraints
+        - Examples, mockups, or references if applicable
+        - Any additional resources that might help
+        - Expected behavior and functionality
+        - Any technical requirements or dependencies
+
+        You can attach images by dragging & dropping them here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion-link
+    attributes:
+      label: Suggestion Reference
+      description: Discord suggestion post reference (This field is automatically filled by bots)
+      placeholder: |
+        ⚠️ **WARNING: The following section is intended for automated systems only**
+        This section will be automatically filled when the bounty comes from a Discord suggestion.
+        Please leave this empty if you're creating a manual bounty submission.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Payment Information
+        Please provide detailed contact and payment information below.
+
+  - type: textarea
+    id: contact-info
+    attributes:
+      label: Contact Information
+      description: How can developers contact you regarding this bounty?
+      placeholder: |
+        Please provide:
+        - Preferred contact method (Discord, GitHub, email, etc.)
+        - Your username/handle for the chosen platform
+        - Any specific contact instructions or preferences
+        - Best times to reach you (optional)
+    validations:
+      required: true
+
+  - type: textarea
+    id: payment-info
+    attributes:
+      label: Payment Details
+      description: Specify the bounty reward and payment methods
+      placeholder: |
+        Please include:
+        - Bounty reward amount
+        - Available payment methods
+        - Any conditions for payment
+        - Payment timeline expectations
+        - Any additional reward information
+    validations:
+      required: true

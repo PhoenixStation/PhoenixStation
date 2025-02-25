@@ -157,6 +157,3 @@
 
 /datum/preference/toggle/erp/cumflation
 	savefile_key = "cumflation_pref"
-
-/datum/preference/choiced/directory_character_prefs
-	savefile_identifier = PREFERENCE_PLAYER

@@ -353,8 +353,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "eX" = (
 /obj/machinery/computer/order_console/mining{
-	forced_express = 1;
-	express_cost_multiplier = 1
+	forced_express = 1
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
@@ -1639,8 +1638,6 @@
 /obj/effect/spawner/random/exotic/technology,
 /obj/item/raw_anomaly_core/random,
 /obj/item/raw_anomaly_core/random,
-/obj/item/raw_anomaly_core/random,
-/obj/effect/spawner/random/exotic/tool,
 /obj/effect/spawner/random/exotic/tool,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
@@ -1903,9 +1900,6 @@
 "ES" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/ballistic/automatic/lanca,
-/obj/item/gun/ballistic/automatic/lanca{
-	pixel_x = 3
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "Fb" = (
@@ -2150,9 +2144,7 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "Iy" = (
-/obj/machinery/vending/medical/syndicate/cybersun{
-	req_access = null
-	},
+/obj/machinery/vending/medical/syndicate/cybersun,
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 8
 	},
@@ -2408,7 +2400,6 @@
 /obj/item/knife/combat,
 /obj/item/clothing/under/syndicate/skyrat/enclave/real,
 /obj/item/reagent_containers/hypospray/medipen/stimpack,
-/obj/item/clothing/glasses/hud/security/sunglasses/gars/giga,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Mu" = (
@@ -2593,9 +2584,6 @@
 "OY" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/ballistic/rifle/boltaction,
-/obj/item/gun/ballistic/rifle/boltaction{
-	pixel_x = 3
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/cargodise_freighter/vault)
 "Pa" = (
@@ -3175,8 +3163,6 @@
 	name = "Delivery - Interdyne Mining Co";
 	req_access = list("syndicate")
 	},
-/obj/effect/spawner/random/exotic/antag_gear,
-/obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/contraband/armory,
 /obj/item/tank/internals/oxygen/red,
 /obj/item/tank/internals/oxygen/red,

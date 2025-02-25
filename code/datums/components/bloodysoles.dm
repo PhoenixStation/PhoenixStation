@@ -220,6 +220,10 @@
 			add_parent_to_footprint(FP)
 			FP.bloodiness = blood_lost
 			FP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
+			// SPLURT ADDITION START - Colored Blood
+			FP.color = FP.blood_DNA_to_color(FP.color)
+			FP.icon = FP.colored_blood_icon(FP.icon)
+			// SPLURT ADDITION END
 			FP.update_appearance()
 
 
@@ -241,6 +245,10 @@
 		if((bloody_shoes[last_blood_state] - (bloody_shoes[last_blood_state] * BLOOD_PERCENT_LOSS_ON_STEP)) >= BLOOD_FOOTPRINTS_MIN && !(pool_FP.entered_dirs & wielder.dir))
 			// If our feet are bloody enough, add an entered dir
 			pool_FP.entered_dirs |= wielder.dir
+			// SPLURT ADDITION START - Colored Blood
+			pool_FP.color = pool.blood_DNA_to_color(pool_FP.color)
+			pool_FP.icon = pool.colored_blood_icon(pool_FP.icon)
+			// SPLURT ADDITION END
 			pool_FP.update_appearance()
 		return
 

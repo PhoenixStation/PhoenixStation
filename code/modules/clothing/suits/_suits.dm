@@ -31,8 +31,8 @@
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		//SKYRAT EDIT CHANGE BEGIN
 		//. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood") //ORIGINAL
-		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'modular_skyrat/master_files/icons/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
-		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
+		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'modular_skyrat/master_files/icons/mob/64x32_blood.dmi' : colored_blood_icon('icons/effects/blood.dmi') // SPLURT EDIT - Colored Blood - And we need new white icons for blood colors (64x32)!
+		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 		//SKYRAT EDIT CHANGE END
 
 	var/mob/living/carbon/human/wearer = loc

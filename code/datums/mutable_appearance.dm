@@ -23,13 +23,19 @@
  * appearance_flags - Our appearance's appearance_flags
  * offset_const - A constant to offset our plane by, so it renders on the right "z layer"
 **/
-/proc/mutable_appearance(icon, icon_state = "", layer = FLOAT_LAYER, atom/offset_spokesman, plane = FLOAT_PLANE, alpha = 255, appearance_flags = NONE, offset_const)
+/proc/mutable_appearance(icon, icon_state = "", layer = FLOAT_LAYER, atom/offset_spokesman, plane = FLOAT_PLANE, alpha = 255, appearance_flags = NONE, offset_const, color, blend_mode) // SPLURT EDIT - 'color, blend_mode' added
 	var/mutable_appearance/appearance = new()
 	appearance.icon = icon
 	appearance.icon_state = icon_state
 	appearance.layer = layer
 	appearance.alpha = alpha
 	appearance.appearance_flags |= appearance_flags
+	// SPLURT ADDITION START - Colors for overlays
+	if(color)
+		appearance.color = color
+	if(blend_mode)
+		appearance.blend_mode = blend_mode
+	// SPLURT ADDITION END - Colors for overlays
 	if(plane != FLOAT_PLANE)
 		// You need to pass in some non null object to reference
 		if(isatom(offset_spokesman))

@@ -1,0 +1,46 @@
+title: "New Feature Suggestion"
+labels: ["feature-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a new feature!
+
+        Please ensure this is about new content NOT related to our previous codebase.
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      description: Please ensure you've checked the following before submitting
+      options:
+        - label: This is NOT about content from our previous codebase
+          required: true
+        - label: This is a new feature suggestion, not a tweak to existing content
+          required: true
+  - type: textarea
+    id: about-feature
+    attributes:
+      label: About the Feature
+      description: Provide detailed information about the feature you're suggesting
+      placeholder: |
+        Please include:
+        - Detailed description of the feature
+        - How it would work
+        - How it would benefit the codebase
+        - Any mockups, sketches, or examples
+    validations:
+      required: true
+  - type: textarea
+    id: port-info
+    attributes:
+      label: Is it a Port?
+      description: If this is a port from another codebase (NOT our previous codebase), provide details
+      placeholder: |
+        If this is a port, please include:
+        - Source codebase/repository
+        - Location in source (file paths, class paths, text, images, urls, etc.)
+        - Any relevant code snippets
+        - Screenshots/videos if applicable
+
+        Leave this section blank if this is not a port.
+    validations:
+      required: false

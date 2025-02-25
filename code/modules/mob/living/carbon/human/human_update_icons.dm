@@ -206,9 +206,9 @@ There are several things that need to be remembered:
 			// When byond gives us filters that respect dirs we can just use an alpha mask for this but until then, two icons weeeee
 			var/mutable_appearance/hands_combined = mutable_appearance(layer = -GLOVES_LAYER, appearance_flags = KEEP_TOGETHER)
 			if(has_left_hand(check_disabled = FALSE))
-				hands_combined.overlays += mutable_appearance('icons/effects/blood.dmi', "bloodyhands_left")
+				hands_combined.overlays += mutable_appearance(colored_blood_icon('icons/mob/effects/dam_mob.dmi'), "bloodyhands_left", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 			if(has_right_hand(check_disabled = FALSE))
-				hands_combined.overlays += mutable_appearance('icons/effects/blood.dmi', "bloodyhands_right")
+				hands_combined.overlays += mutable_appearance(colored_blood_icon('icons/mob/effects/dam_mob.dmi'), "bloodyhands_right", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 			overlays_standing[GLOVES_LAYER] = hands_combined
 			apply_overlay(GLOVES_LAYER)
 		return

@@ -1026,9 +1026,11 @@
 		image_dir = SOUTH
 		if(dmg_overlay_type)
 			if(brutestate)
-				. += image('icons/mob/effects/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_[brutestate]0", -DAMAGE_LAYER, image_dir)
+				. += image(colored_blood_icon('icons/mob/effects/dam_mob.dmi'), "[dmg_overlay_type]_[body_zone]_[brutestate]0", -DAMAGE_LAYER, image_dir) // SPLURT EDIT - Colored Blood
+				color = blood_DNA_to_color(color) // SPLURT ADDITION - Colored Blood
 			if(burnstate)
-				. += image('icons/mob/effects/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, image_dir)
+				. += image(colored_blood_icon('icons/mob/effects/dam_mob.dmi'), "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, image_dir) // SPLURT EDIT - Colored Blood
+				color = blood_DNA_to_color(color) // SPLURT ADDITION - Colored Blood
 
 	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 	var/image/aux

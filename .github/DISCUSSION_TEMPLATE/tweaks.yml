@@ -1,0 +1,52 @@
+title: "Rebase Tweak Request"
+labels: ["rebase-tweak"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to request a tweak for content that exists differently between our current and previous codebase!
+
+        Please ensure this is about content that exists in both codebases but works differently.
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      description: Please ensure you've checked the following before submitting
+      options:
+        - label: This tweak is about content that exists in both the rebase and our previous codebase
+          required: true
+        - label: This is not about a new feature or content that doesn't exist in the rebase
+          required: true
+  - type: textarea
+    id: about-tweak
+    attributes:
+      label: About the Tweak
+      description: Provide general information about the tweak you're requesting
+      placeholder: "Explain what you want to tweak and why..."
+    validations:
+      required: true
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content in Rebase
+      description: Describe how the content currently works in the rebase
+      placeholder: |
+        Please include:
+        - Location in rebase codebase (file paths, class paths, text, images, urls, etc.)
+        - Current behavior
+        - Screenshots/videos if applicable
+        - Any relevant code snippets
+    validations:
+      required: true
+  - type: textarea
+    id: old-content
+    attributes:
+      label: Content in Previous Codebase
+      description: Describe how the content works in our previous codebase
+      placeholder: |
+        Please include:
+        - Location in old codebase (file paths, class paths, text, images, urls, etc.)
+        - How it behaves differently from rebase
+        - Screenshots/videos if applicable
+        - Any relevant code snippets
+    validations:
+      required: true

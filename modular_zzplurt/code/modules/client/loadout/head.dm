@@ -25,15 +25,15 @@
 
 //
 
-/datum/loadout_item/head/beret
+/datum/loadout_item/head/beret/black
 	name = "Black beret"
 	item_path = /obj/item/clothing/head/beret/black
 
-/datum/loadout_item/head/purpleberet
+/datum/loadout_item/head/beret/purple
 	name = "Purple beret"
 	item_path = /obj/item/clothing/head/beret/purple
 
-/datum/loadout_item/head/blueberet
+/datum/loadout_item/head/beret/blue
 	name = "Blue beret"
 	item_path = /obj/item/clothing/head/beret/blue
 
