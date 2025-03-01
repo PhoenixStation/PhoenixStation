@@ -1,0 +1,11 @@
+## Days until storyteller is votable
+# In case there's a forced storyteller in the config, allow for voting every set amount of days
+# this calculates day % value
+# Comment or set to 0 to disable
+#DAYS_UNTIL_STORYTELLER_VOTABLE 0
+
+## Rounds until storyteller is votable
+# In case there's a forced storyteller in the config, allow for voting every set amount of rounds
+# this calculates round % value
+# Comment or set to 0 to disable
+#ROUNDS_UNTIL_STORYTELLER_VOTABLE 0

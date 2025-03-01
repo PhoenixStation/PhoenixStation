@@ -23,7 +23,7 @@
 					var/genital_sniff = ""
 					if(HAS_TRAIT(usr, TRAIT_GFLUID_DETECT))
 						var/datum/reagent/cummies = find_reagent_object_from_type(ORG.internal_fluid_datum)
-						genital_sniff = ". You smell <span style='color:[cummies.color]';>[cummies.name]</span> brewing inside..."
+						genital_sniff = cummies ? ". You smell <span style='color:[cummies.color]';>[cummies.name]</span> brewing inside..." : ""
 					line += ORG.get_description_string(G) + genital_sniff
 					//SPLURT EDIT END
 				if(length(line))

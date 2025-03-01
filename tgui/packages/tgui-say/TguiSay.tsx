@@ -237,6 +237,12 @@ export class TguiSay extends Component<{}, State> {
         break;
 
       case KEY.Enter:
+        // SPLURT EDIT START
+        // Allow Shift+Enter for new lines
+        if (event.shiftKey) {
+          return;
+        }
+        // SPLURT EDIT END
         event.preventDefault();
         this.handleEnter();
         break;

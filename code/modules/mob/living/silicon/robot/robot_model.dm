@@ -241,6 +241,10 @@
 	cyborg.drop_all_held_items()
 	cyborg.model = new_model
 	cyborg.update_module_innate()
+	// SPLURT EDIT START - CYBORGS - Dogborg specific modules
+	if(TRAIT_R_DOGBORG in new_model.model_features)
+		new_model.dogborg_equip()
+	// SPLURT EDIT END
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
@@ -326,8 +330,9 @@
 
 /obj/item/robot_model/proc/do_transform_delay()
 	var/mob/living/silicon/robot/cyborg = loc
+	do_smoke(1, 2, src, get_turf(src), /obj/effect/particle_effect/fluid/smoke) // SPLURT EDIT - CYBORGS - Some modules have no transformation animation and we need to hide that
 	sleep(0.1 SECONDS)
-	flick("[cyborg_base_icon]_transform", cyborg)
+	// flick("[cyborg_base_icon]_transform", cyborg) // SPLURT EDIT - CYBORGS
 	ADD_TRAIT(cyborg, TRAIT_NO_TRANSFORM, REF(src))
 	if(locked_transform)
 		cyborg.ai_lockdown = TRUE
@@ -343,6 +348,7 @@
 			'sound/items/tools/welder.ogg',
 			'sound/items/tools/ratchet.ogg',
 			), 80, TRUE, -1)
+		do_sparks(2, FALSE, src) // SPLURT EDIT - CYBORGS
 		sleep(0.7 SECONDS)
 	cyborg.SetLockdown(FALSE)
 	cyborg.ai_lockdown = FALSE

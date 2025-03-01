@@ -39,7 +39,7 @@
 	say(message, language = language)
 
 ///The me emote verb
-/mob/verb/me_verb(message as text)
+/mob/verb/me_verb(message as message) // SPLURT EDIT - Original: /mob/verb/me_verb(message as text)
 	set name = "Me"
 	set category = "IC"
 	set desc = "Perform a custom emote. Leave blank to pick between an audible or a visible emote (Defaults to visible)."
@@ -48,7 +48,7 @@
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
-	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+	message = trim(copytext_char(html_encode(message), 1, MAX_MESSAGE_LEN)) // SPLURT EDIT - Original: message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 
 	QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), "me", EMOTE_VISIBLE|EMOTE_AUDIBLE, message, TRUE), SSspeech_controller)
 

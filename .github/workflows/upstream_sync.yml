@@ -1,0 +1,80 @@
+name: 'Upstream Sync'
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Runs every 12 hours
+  workflow_dispatch:  # Allows manual triggering
+    inputs:
+      sync_test_mode:
+        description: 'Test mode (dry run)'
+        type: boolean
+        default: false
+
+jobs:
+  sync_with_upstream:
+    runs-on: ubuntu-latest
+    name: Sync with upstream repository
+
+    steps:
+      # Step 1: Check out our repository
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for all branches
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use GITHUB_TOKEN for authentication
+
+      # Step 2: Configure git user as github-actions[bot]
+      - name: Setup Git
+        uses: qoomon/actions--setup-git@v1
+        with:
+          user: 'bot'  # Configures as github-actions[bot]
+
+      # Step 3: Make sure upstream-updates branch exists and is up to date with master
+      - name: Sync upstream-updates with master
+        run: |
+          # Configure git to use GITHUB_TOKEN for authentication
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+
+          # Create or reset upstream-updates branch to match master
+          git checkout master
+          git checkout -B upstream-updates
+          git push -f origin upstream-updates
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 4: Sync with upstream Bubberstation
+      - name: Sync upstream changes
+        id: sync
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
+        with:
+          target_sync_branch: upstream-updates
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_branch: master
+          upstream_sync_repo: Bubberstation/Bubberstation
+          test_mode: ${{ inputs.sync_test_mode }}
+
+      # Get current date for PR title
+      - name: Get current date
+        if: steps.sync.outputs.has_new_commits == 'true'
+        run: |
+          echo "NOW=$(date +%d.%m.%Y)" >> $env:GITHUB_ENV
+
+      # Add new step to create pull request when changes are found
+      - name: Create Pull Request
+        if: steps.sync.outputs.has_new_commits == 'true'
+        uses: diillson/auto-pull-request@v1.0.1
+        with:
+          source_branch: "upstream-updates"
+          destination_branch: "master"
+          pr_title: "[UPSTREAM UPDATE] ${{ env.NOW }}"
+          pr_body: "Upstream update ${{ env.NOW }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 5: Output results
+      - name: New commits found
+        if: steps.sync.outputs.has_new_commits == 'true'
+        run: echo "New commits were found and synced."
+
+      - name: No new commits
+        if: steps.sync.outputs.has_new_commits == 'false'
+        run: echo "No new commits to sync."

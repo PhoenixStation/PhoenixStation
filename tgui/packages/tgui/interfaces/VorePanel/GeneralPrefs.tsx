@@ -96,4 +96,5 @@ export const PREF_TYPE_MAP = {
     component: PrefBinary,
     name: 'Fullscreen Overlays',
   },
+  cyborg_sleepers: { component: PrefBinary, name: 'Cyborg Sleepers' }, // SPLURT ADDITION - CYBORGS - Cyborg sleepers
 };

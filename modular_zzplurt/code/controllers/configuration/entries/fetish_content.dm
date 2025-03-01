@@ -6,3 +6,5 @@
 /datum/config_entry/number/macro_health_cap
 	default = 3.5 //21 ft
 	integer = FALSE
+
+/datum/config_entry/flag/enable_dogborg_sleepers
