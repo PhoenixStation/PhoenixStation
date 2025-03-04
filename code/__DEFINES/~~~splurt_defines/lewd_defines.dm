@@ -1,0 +1,1 @@
+#define NORMIE_HEARCHECK 4

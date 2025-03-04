@@ -204,3 +204,8 @@
 /datum/loadout_item/uniform/miniskirt_sheer
 	name = "fashionable sheer miniskirt"
 	item_path = /obj/item/clothing/under/misc/miniskirt_sheer
+
+/datum/loadout_item/uniform/miscellaneous/bathrobe
+	name = "Bathrobe"
+	item_path = /obj/item/clothing/under/costume/skyrat/bathrobe
+	can_be_greyscale = TRUE

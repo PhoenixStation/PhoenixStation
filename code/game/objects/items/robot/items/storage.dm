@@ -38,6 +38,7 @@
 
 	if(usr != loc || !stored)
 		return
+	modify_appearance(stored, FALSE) // SPLURT EDIT - CYBORGS - Reverting to original appearance
 	stored.forceMove(get_turf(usr))
 	return
 
@@ -58,6 +59,7 @@
 /obj/item/borg/apparatus/click_alt(mob/living/silicon/robot/user)
 	if(!stored || !issilicon(user))
 		return CLICK_ACTION_BLOCKING
+	modify_appearance(stored, FALSE) // SPLURT EDIT - CYBORGS - Reverting to original appearance
 	stored.forceMove(user.drop_location())
 	return CLICK_ACTION_SUCCESS
 
@@ -259,21 +261,23 @@
 	update_appearance()
 	return ..()
 
-/obj/item/borg/apparatus/sheet_manipulator/update_overlays()
-	. = ..()
-	var/mutable_appearance/arm = mutable_appearance(icon, "borg_stack_apparatus_arm1")
-	if(stored)
-		stored.pixel_x = 0
-		stored.pixel_y = 0
-		arm.icon_state = "borg_stack_apparatus_arm2"
-		var/mutable_appearance/stored_copy = new /mutable_appearance(stored)
-		var/underscore = findtext(stored_copy.icon_state, "_")
-		if(underscore)
-			stored_copy.icon_state = initial(stored.icon_state) //how we use the icon_state of single sheets, even with full stacks
-		stored_copy.layer = FLOAT_LAYER
-		stored_copy.plane = FLOAT_PLANE
-		. += stored_copy
-	. += arm
+// SPLURT EDIT START - CYBORGS - Refactored at modular_zzplurt\code\game\objects\items\devices\cyborg_modules\general_modules.dm
+// /obj/item/borg/apparatus/sheet_manipulator/update_overlays()
+// 	. = ..()
+// 	var/mutable_appearance/arm = mutable_appearance(icon, "borg_stack_apparatus_arm1")
+// 	if(stored)
+// 		stored.pixel_x = 0
+// 		stored.pixel_y = 0
+// 		arm.icon_state = "borg_stack_apparatus_arm2"
+// 		var/mutable_appearance/stored_copy = new /mutable_appearance(stored)
+// 		var/underscore = findtext(stored_copy.icon_state, "_")
+// 		if(underscore)
+// 			stored_copy.icon_state = initial(stored.icon_state) //how we use the icon_state of single sheets, even with full stacks
+// 		stored_copy.layer = FLOAT_LAYER
+// 		stored_copy.plane = FLOAT_PLANE
+// 		. += stored_copy
+// 	. += arm
+// SPLURT EDIT END
 
 /obj/item/borg/apparatus/sheet_manipulator/examine()
 	. = ..()
@@ -320,7 +324,7 @@
 
 /obj/item/borg/apparatus/service
 	name = "service apparatus"
-	desc = "A special apparatus for carrying food, bowls, plates, oven trays, soup pots and paper."
+	desc = "A special apparatus for carrying seeds, food, bowls, plates, oven trays, soup pots, and paper."
 	icon_state = "borg_service_apparatus"
 	storable = list(
 		/obj/item/food,
@@ -329,6 +333,7 @@
 		/obj/item/plate/oven_tray,
 		/obj/item/reagent_containers/cup/bowl,
 		/obj/item/reagent_containers/cup/soup_pot,
+		/obj/item/seeds,
 	)
 
 /obj/item/borg/apparatus/service/Initialize(mapload)

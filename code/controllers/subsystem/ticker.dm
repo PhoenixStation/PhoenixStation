@@ -171,7 +171,7 @@ SUBSYSTEM_DEF(ticker)
 			current_state = GAME_STATE_PREGAME
 		// BUBBERSTATION EDIT START
 			var/storyteller = CONFIG_GET(string/default_storyteller)
-			if(storyteller)
+			if(storyteller && !SSgamemode.storyteller_vote_can_override()) // SPLURT EDIT - Original: if(storyteller)
 				SSgamemode.set_storyteller(text2path(storyteller), TRUE)
 			else
 				SSvote.initiate_vote(/datum/vote/storyteller, "Storyteller Vote", forced = TRUE)

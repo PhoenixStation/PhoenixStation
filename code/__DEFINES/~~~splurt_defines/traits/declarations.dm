@@ -87,3 +87,7 @@
 #define TRAIT_HOLYWATER_WEAKNESS	"holywater_weakness"
 /// Trait used by Flutter Move element
 #define TRAIT_FLUTTER_MOVE			"flutter_move"
+
+// Cyborg traits
+/// Any model that is a dogborg
+#define TRAIT_R_DOGBORG "dogborg"
