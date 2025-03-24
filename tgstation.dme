@@ -9828,6 +9828,8 @@
 #include "modular_zzzphoenix\code\modules\admin\whitelist.dm"
 #include "modular_zzzphoenix\code\modules\alternative_job_titles\alt_job_titles.dm"
 #include "modular_zzzphoenix\code\modules\customization\modules\mob\dead\new_player\body_markings\body_markings.dm"
+#include "modular_zzzphoenix\code\modules\donator\loadout.dm"
+#include "modular_zzzphoenix\code\modules\donator\clothes\donator_clothing.dm"
 #include "modular_zzzphoenix\code\modules\markings\eyes.dm"
 #include "modular_zzzphoenix\code\modules\markings\plain.dm"
 #include "modular_zzzphoenix\code\modules\species\xeno.dm"
