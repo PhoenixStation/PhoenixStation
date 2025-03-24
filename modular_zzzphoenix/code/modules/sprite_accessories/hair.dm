@@ -86,10 +86,6 @@
 	name = "Damsel"
 	icon_state = "hair_damsel"
 
-/datum/sprite_accessory/hair/phoenix/hair_wavylong
-	name = "Wavy Long"
-	icon_state = "hair_wavylong"
-
 /datum/sprite_accessory/hair/phoenix/hair_wavyovereye
 	name = "Wavy Over Eye"
 	icon_state = "hair_wavyovereye"
@@ -298,3 +294,7 @@
 /datum/sprite_accessory/hair/phoenix/hibiscus
 	name = "Hibiscus"
 	icon_state = "pod_hair_hibiscus"
+
+/datum/sprite_accessory/hair/wavylong
+	icon = 'modular_zzzphoenix/icons/mob/sprite_accesory/hair.dmi'
+	icon_state = "hair_wavylong"
