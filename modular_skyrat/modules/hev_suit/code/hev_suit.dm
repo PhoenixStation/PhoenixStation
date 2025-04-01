@@ -81,7 +81,7 @@
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/power_store/cell/hyper
 	slowdown = 0 //I am not gimping doctor freeman
-	actions_types = list(/datum/action/item_action/hev_toggle, /datum/action/item_action/hev_toggle_notifs, /datum/action/item_action/toggle_helmet, /datum/action/item_action/toggle_spacesuit)
+	actions_types = list(/datum/action/item_action/hev_toggle, /datum/action/item_action/hev_toggle_notifs, /datum/action/item_action/toggle_spacesuit) // SPLURT EDIT
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
 	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT
 
@@ -214,14 +214,14 @@
 
 /datum/action/item_action/hev_toggle
 	name = "Toggle HEV Suit"
-	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	background_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi' // SPLURT EDIT
 	background_icon_state = "bg_hl"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "system_off"
 
 /datum/action/item_action/hev_toggle_notifs
 	name = "Toggle HEV Suit Notifications"
-	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	background_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi' // SPLURT EDIT
 	background_icon_state = "bg_hl"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "sound_VOICE_AND_TEXT"
@@ -860,9 +860,13 @@
 #undef HEV_COOLDOWN_HEAL
 #undef HEV_COOLDOWN_RADS
 #undef HEV_COOLDOWN_ACID
+#undef PCV_COOLDOWN_HEAL
+#undef PCV_COOLDOWN_RADS
+#undef PCV_COOLDOWN_ACID
 #undef HEV_HEAL_AMOUNT
 #undef PCV_HEAL_AMOUNT
 #undef HEV_BLOOD_REPLENISHMENT
+#undef PCV_BLOOD_REPLENISHMENT
 #undef HEV_NOTIFICATION_TEXT_AND_VOICE
 #undef HEV_NOTIFICATION_TEXT
 #undef HEV_NOTIFICATION_VOICE

@@ -45,16 +45,16 @@
 	target_arousal = 6
 
 /datum/interaction/lewd/handjob/act(mob/living/user, mob/living/target)
-	var/obj/item/reagent_containers/liquid_container
+	var/obj/item/liquid_container
 
 	// Check active hand first
 	var/obj/item/cached_item = user.get_active_held_item()
-	if(istype(cached_item, /obj/item/reagent_containers))
+	if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 		liquid_container = cached_item
 	else
 		// Check if pulling a container
 		cached_item = user.pulling
-		if(istype(cached_item, /obj/item/reagent_containers))
+		if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 			liquid_container = cached_item
 
 	// Add container text to message if needed
@@ -71,16 +71,16 @@
 
 /datum/interaction/lewd/handjob/show_climax(mob/living/cumming, mob/living/came_in, position)
 	if(interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER)
-		var/obj/item/reagent_containers/liquid_container
+		var/obj/item/liquid_container
 
 		// Check active hand first
 		var/obj/item/cached_item = came_in.get_active_held_item()
-		if(istype(cached_item, /obj/item/reagent_containers))
+		if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 			liquid_container = cached_item
 		else
 			// Check if pulling a container
 			cached_item = came_in.pulling
-			if(istype(cached_item, /obj/item/reagent_containers))
+			if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 				liquid_container = cached_item
 
 		if(liquid_container)
@@ -109,20 +109,20 @@
 
 /datum/interaction/lewd/handjob/post_climax(mob/living/cumming, mob/living/came_in, position)
 	if(interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER)
-		var/obj/item/reagent_containers/liquid_container
+		var/obj/item/liquid_container
 
 		// Check active hand first
 		var/obj/item/cached_item = came_in.get_active_held_item()
-		if(istype(cached_item, /obj/item/reagent_containers))
+		if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 			liquid_container = cached_item
 		else
 			// Check if pulling a container
 			cached_item = came_in.pulling
-			if(istype(cached_item, /obj/item/reagent_containers))
+			if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 				liquid_container = cached_item
 
 		if(liquid_container)
-			var/obj/item/organ/external/genital/testicles/testicles = cumming.get_organ_slot(ORGAN_SLOT_TESTICLES)
+			var/obj/item/organ/genital/testicles/testicles = cumming.get_organ_slot(ORGAN_SLOT_TESTICLES)
 			if(testicles)
 				testicles.transfer_internal_fluid(liquid_container.reagents, testicles.internal_fluid_count)
 

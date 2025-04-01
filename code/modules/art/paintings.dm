@@ -69,7 +69,7 @@
 
 	/**
 	 * How big the grid cells that compose the painting are in the UI (multiplied by zoom).
-	 * This impacts the size of the UI, so smaller values are generally better for bigger canvases and viceversa
+	 * This impacts the size of the UI, so smaller values are generally better for bigger canvases and vice-versa
 	 */
 	var/pixels_per_unit = 9
 
@@ -581,9 +581,12 @@
 	. = ..()
 	if(persistence_id)
 		. += span_notice("Any painting placed here will be archived at the end of the shift.")
+		//SPLURT ADDITION: Helpful comment about paintings being saved
+		. += span_notice("Previously archived paintings are forever safe and can be displayed again in the future.")
+		//SPLURT END
 	if(current_canvas)
 		current_canvas.ui_interact(user)
-		. += span_notice("Use wirecutters to remove the painting.")
+		. += span_notice("Use wirecutters to safely remove the painting - fret not, this won't delete saved paintings.") //SPLURT EDIT: Added info about paintings not being deleted if removed from frame
 		if(IS_WEAKREF_OF(user?.mind, current_canvas.last_patron))
 			. += span_notice("<b>Alt-Click</b> to change select a new appearance for the frame of this painting.")
 

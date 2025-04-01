@@ -1,4 +1,3 @@
-import { useBackend } from '../backend';
 import {
   Button,
   Icon,
@@ -8,7 +7,9 @@ import {
   Slider,
   Table,
   Tabs,
-} from '../components';
+} from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 export const Colormate = (props, context) => {
@@ -32,6 +33,7 @@ export const Colormate = (props, context) => {
                       height="100%"
                       style={{
                         '-ms-interpolation-mode': 'nearest-neighbor',
+                        'image-rendering': 'pixelated',
                       }}
                     />
                   </Section>
@@ -45,6 +47,7 @@ export const Colormate = (props, context) => {
                       height="100%"
                       style={{
                         '-ms-interpolation-mode': 'nearest-neighbor',
+                        'image-rendering': 'pixelated',
                       }}
                     />
                   </Section>

@@ -35,17 +35,17 @@
 			"shudders softly.",
 			"trembles as their hands run across bare skin.")]"))
 
-	var/obj/item/reagent_containers/liquid_container
+	var/obj/item/liquid_container
 	var/obj/item/cached_item = user.get_active_held_item()
-	if(istype(cached_item, /obj/item/reagent_containers))
+	if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 		liquid_container = cached_item
 	else
 		cached_item = user.pulling
-		if(istype(cached_item, /obj/item/reagent_containers))
+		if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 			liquid_container = cached_item
 
 	if(liquid_container)
-		var/obj/item/organ/external/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
+		var/obj/item/organ/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
 		if(breasts?.internal_fluid_datum)
 			// Calculate milk amount based on how full the breasts are (0.5 to 2 multiplier)
 			var/milk_multiplier = 0.5
@@ -82,7 +82,7 @@
 	. = ..()
 	if(!ishuman(user))
 		return
-	var/obj/item/organ/external/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(breasts?.internal_fluid_datum)
 		// Calculate milk amount based on how full the breasts are (0.5 to 2 multiplier)
 		var/milk_multiplier = 0.5

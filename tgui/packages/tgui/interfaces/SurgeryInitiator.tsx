@@ -1,10 +1,10 @@
 import { sortBy } from 'common/collections';
-import { KEY_DOWN, KEY_ENTER, KEY_UP } from 'common/keycodes';
-import { BooleanLike } from 'common/react';
 import { Component } from 'react';
+import { Button, KeyListener, Stack } from 'tgui-core/components';
+import { KEY_DOWN, KEY_ENTER, KEY_UP } from 'tgui-core/keycodes';
+import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { Button, KeyListener, Stack } from '../components';
 import { Window } from '../layouts';
 import { BodyZone, BodyZoneSelector } from './common/BodyZoneSelector';
 
@@ -85,28 +85,31 @@ class SurgeryInitiatorInner extends Component<
               />
             </Stack.Item>
 
-            <Stack.Item width="95%">
-              <Stack vertical height="100%">
+            {/* SPLURT TEMPORARY FIX - No scrollwheel - Remove when fixed upstream */}
+            <Stack.Item width="70%" style={{ overflowY: 'auto' }}>
+              <Stack vertical>
                 {surgeries.map((surgery, index) => (
-                  <Button
-                    onClick={() => {
-                      act('start_surgery', {
-                        surgery_name: surgery.name,
-                      });
-                    }}
-                    disabled={surgery.blocked}
-                    selected={index === this.state.selectedSurgeryIndex}
-                    tooltip={
-                      surgery.blocked
-                        ? surgery.blocked_reason ??
-                          'That surgery is unavailable!'
-                        : undefined
-                    } // SKYRAT EDIT - ORIGINAL: tooltip={surgery.blocked ? "Their body is covered!" : undefined}
-                    key={surgery.name}
-                    fluid
-                  >
-                    {surgery.name}
-                  </Button>
+                  <Stack.Item key={surgery.name}>
+                    <Button
+                      onClick={() => {
+                        act('start_surgery', {
+                          surgery_name: surgery.name,
+                        });
+                      }}
+                      disabled={surgery.blocked}
+                      selected={index === this.state.selectedSurgeryIndex}
+                      tooltip={
+                        surgery.blocked
+                          ? (surgery.blocked_reason ??
+                            'That surgery is unavailable!')
+                          : undefined
+                      }
+                      fluid
+                    >
+                      {surgery.name}
+                    </Button>
+                  </Stack.Item>
+                  /* SPLURT TEMPORARY FIX END */
                 ))}
               </Stack>
             </Stack.Item>

@@ -17,16 +17,21 @@
 			continue
 
 		// Check for anything covering a body part
-		if(item_worn.body_parts_covered)
-			// Set the success variable
-			user_disrobed = TRUE
+		if(!item_worn.body_parts_covered)
+			continue
 
-			// Drop the target item
-			dropItemToGround(item_worn, TRUE)
+		// Don't drop items that require time to take off
+		if (item_worn.breakouttime)
+			continue
 
-			// Throw item to a random spot
-			if(throw_clothes)
-				item_worn.throw_at(pick(oview(7,get_turf(src))),10,1)
+		// Drop the target item
+		if (!dropItemToGround(item_worn))
+			continue
+
+		user_disrobed = TRUE
+		// Throw item to a random spot
+		if(throw_clothes)
+			item_worn.throw_at(pick(oview(7,get_turf(src))),10,1)
 
 	// When successfully disrobing a target
 	if(user_disrobed)

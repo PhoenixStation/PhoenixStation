@@ -18,7 +18,8 @@
 
 	//Blood regeneration if there is some space
 	if(!(sigreturn & HANDLE_BLOOD_NO_NUTRITION_DRAIN))
-		if(blood_volume < BLOOD_VOLUME_NORMAL && !HAS_TRAIT(src, TRAIT_NOHUNGER))
+		if(blood_volume < BLOOD_VOLUME_NORMAL && !HAS_TRAIT(src, TRAIT_NOHUNGER) && !HAS_TRAIT(src, TRAIT_NO_BLOOD_REGEN))
+		/// SPLUT EDIT END - NO BLOOD REGEN TRAIT
 			var/nutrition_ratio = round(nutrition / NUTRITION_LEVEL_WELL_FED, 0.2)
 			if(satiety > 80)
 				nutrition_ratio *= 1.25

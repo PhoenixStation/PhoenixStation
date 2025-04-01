@@ -3,8 +3,19 @@
 #undef BODY_SIZE_MAX
 #undef BODY_SIZE_MIN
 
-#define BODY_SIZE_MAX 1.5 // PHOENIX EDIT: Descreased body size max to 1.5
-#define BODY_SIZE_MIN 0.7 // PHOENIX EDIT: Increased body size min to 0.7
+#ifdef BODY_SIZE_MAX_OVERRIDE
+	#define BODY_SIZE_MAX BODY_SIZE_MAX_OVERRIDE
+	#undef BODY_SIZE_MAX_OVERRIDE
+#else
+	#define BODY_SIZE_MAX 1.5 // PHOENIX EDIT: Descreased body size max to 1.5
+#endif
+
+#ifdef BODY_SIZE_MIN_OVERRIDE
+	#define BODY_SIZE_MIN BODY_SIZE_MIN_OVERRIDE
+	#undef BODY_SIZE_MIN_OVERRIDE
+#else
+	#define BODY_SIZE_MIN 0.7 // PHOENIX EDIT: Increased body size min to 0.7
+#endif
 
 //genitals
 #undef TESTICLES_MAX_SIZE

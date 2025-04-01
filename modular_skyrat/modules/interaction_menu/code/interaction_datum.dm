@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 	if(user_required_parts.len)
 		for(var/thing in user_required_parts)
-			var/obj/item/organ/external/genital/required_part = user.get_organ_slot(thing)
+			var/obj/item/organ/genital/required_part = user.get_organ_slot(thing)
 			if(isnull(required_part))
 				return FALSE
 			if(!required_part.is_exposed())
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 	if(target_required_parts.len)
 		for(var/thing in target_required_parts)
-			var/obj/item/organ/external/genital/required_part = target.get_organ_slot(thing)
+			var/obj/item/organ/genital/required_part = target.get_organ_slot(thing)
 			if(isnull(required_part))
 				return FALSE
 			if(!required_part.is_exposed())
@@ -102,7 +102,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	// We replace %USER% with nothing because manual_emote already prepends it.
 	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
 	if(lewd)
-		user.emote("subtle", null, msg, TRUE)
+		//SPLURT EDIT: msg -> span_lewd(msg) to give it the lewd color
+		user.emote("subtle", null, span_lewd(msg), TRUE)
 	else
 		user.manual_emote(msg)
 	if(user_messages.len)

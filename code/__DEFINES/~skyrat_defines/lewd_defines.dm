@@ -34,3 +34,11 @@
 #define BREAST_SIZE_S "S"
 #define BREAST_SIZE_T "T"
 #define BREAST_SIZE_BEYOND_MEASUREMENT "beyond measurement"
+
+//ERP Size Areas
+#define SIZE_WHITELISTED_AREAS list(\
+		/area/centcom/interlink/dorm_rooms,\
+		/area/centcom/holding/cafe/dorms,\
+		/area/misc/hilbertshotel,\
+		/area/station/commons/dorms,\
+		)

@@ -662,7 +662,7 @@
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/snore/snore2/run_emote(mob/user, params)
-	var/obj/item/organ/internal/tongue/tongue = user.get_organ_slot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/tongue/tongue = user.get_organ_slot(ORGAN_SLOT_TONGUE)
 	var/say_mod = (tongue ? tongue.say_mod : "says")
 	var/list/aaauughh = list(
 		"lets out an <b>earthshaking</b> snore.",
@@ -782,7 +782,7 @@
 	sound = 'modular_zzplurt/sound/voice/barks/poyo.ogg'
 
 /datum/emote/living/poyo/run_emote(mob/user, params, type_override, intentional)
-	var/obj/item/organ/internal/tongue/tongue = user.get_organ_slot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/tongue/tongue = user.get_organ_slot(ORGAN_SLOT_TONGUE)
 	var/say_mod = (tongue ? tongue.say_mod : "says")
 	message = replacetextEx(message, "%SAYS", say_mod)
 	. = ..()
@@ -1230,3 +1230,66 @@
 	sound = 'modular_zzplurt/sound/voice/gachi/ah.ogg'
 	cooldown = 0.67 SECONDS
 	sound_volume = 25
+
+/datum/emote/living/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/hiss/get_sound(mob/living/user)
+	return pick('modular_zzplurt/sound/voice/catpeople/cat_hiss1.ogg',
+				'modular_zzplurt/sound/voice/catpeople/cat_hiss2.ogg',
+				'modular_zzplurt/sound/voice/catpeople/cat_hiss3.ogg')
+
+/datum/emote/living/coo
+	key = "coo"
+	key_third_person ="coos"
+	message = "coos."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_zzplurt/sound/voice/coo.ogg'
+
+/datum/emote/living/huh
+	key = "huh"
+	key_third_person = "huh's"
+	message = "seems confused."
+	sound = 'modular_zzplurt/sound/voice/huh.ogg'
+
+/datum/emote/living/whine
+	key = "whine"
+	key_third_person = "whines"
+	message = "whines."
+	sound = 'modular_zzplurt/sound/voice/whine.ogg'
+
+/datum/emote/living/meow4
+	key = "meow4"
+	key_third_person = "meows"
+	message = "meows!"
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/meow4/get_sound(mob/living/user)
+	return pick('modular_zzplurt/sound/voice/catpeople/cat_meow4.ogg',
+				'modular_zzplurt/sound/voice/catpeople/cat_meow5.ogg',
+				'modular_zzplurt/sound/voice/catpeople/cat_meow6.ogg',
+				'modular_zzplurt/sound/voice/catpeople/cat_meow7.ogg')
+
+/datum/emote/living/pain
+	key = "pain"
+	key_third_person = "cries out in pain!"
+	message = "cries out in pain!"
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/pain/get_sound(mob/living/user)
+	if(user.gender == MALE)
+		return pick('modular_zzplurt/sound/voice/human_male_pain_1.ogg', 'modular_zzplurt/sound/voice/human_male_pain_2.ogg', 'modular_zzplurt/sound/voice/human_male_pain_3.ogg', 'modular_zzplurt/sound/voice/human_male_pain_rare.ogg', 'modular_zzplurt/sound/voice/human_male_scream_1.ogg', 'modular_zzplurt/sound/voice/human_male_scream_2.ogg', 'modular_zzplurt/sound/voice/human_male_scream_3.ogg', 'modular_zzplurt/sound/voice/human_male_scream_4.ogg')
+	return pick('modular_zzplurt/sound/voice/human_female_pain_1.ogg', 'modular_zzplurt/sound/voice/human_female_pain_2.ogg', 'modular_zzplurt/sound/voice/human_female_pain_3.ogg', 'modular_zzplurt/sound/voice/human_female_scream_2.ogg', 'modular_zzplurt/sound/voice/human_female_scream_3.ogg', 'modular_zzplurt/sound/voice/human_female_scream_4.ogg')
+
+/datum/emote/living/malaysia
+	key = "malaysia"
+	key_third_person = "admits to blowing up Malaysia!"
+	message = "admits to blowing up Malaysia!"
+	message_mime = "silently explains they blew up Malaysia!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_zzplurt/sound/voice/malaysia.ogg'
