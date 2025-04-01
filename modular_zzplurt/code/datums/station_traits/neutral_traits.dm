@@ -1,3 +1,5 @@
+// PHOENIX EDIT: Remove Rat
+/*
 /datum/station_trait/announcement_intern
 	name = "Announcement rat"
 	report_message = "Don't forget to bring cheese!"
@@ -10,6 +12,7 @@
 /datum/station_trait/announcement_medbot/New()
 	blacklist += list(/datum/station_trait/announcement_dagoth)
 	. = ..()
+*/
 
 /datum/station_trait/announcement_dagoth
 	name = "Announcement Sixth House"
