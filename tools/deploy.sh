@@ -48,3 +48,7 @@ source modular_zubbers/tools/deploy_bubber.sh
 # SPLURT EDIT ADDITION BEGIN - Call our deploy too
 source modular_zzplurt/tools/deploy_splurt.sh
 # SPLURT EDIT ADDITION END - Call our deploy too
+
+# PHOENIX EDIT ADDITION BEGIN - Call our deploy too
+source modular_zzzphoenix/tools/deploy_phoenix.sh
+# PHOENIX EDIT ADDITION END - Call our deploy too
