@@ -52,7 +52,7 @@
 	embed.colour = "#[CONFIG_GET(string/roundend_embed_color)]"
 
 	// Author
-	embed.author = new("S.P.L.U.R.T. Round Reports")
+	embed.author = new("P.H.O.E.N.I.X Round Reports")
 	embed.author.url = embed.url
 
 	// Title
@@ -79,6 +79,12 @@
 	var/image_url = CONFIG_GET(string/roundend_image_url)
 	if(CONFIG_GET(string/roundend_splashscreen_url) && CONFIG_GET(string/splashscreen_webserver_path))
 		image_url = "[CONFIG_GET(string/roundend_splashscreen_url)][SStitle.splashscreen_name]"
+	// PHOENIX EDIT START: Roundend improve
+	else if(CONFIG_GET(str_list/roundend_image_list))
+		var/list/image_list = splittext(CONFIG_GET(str_list/roundend_image_list), "\n")
+		if(length(image_list) > 0)
+			image_url = pick(image_list)
+	// PHOENIX EDIT END
 	if(image_url && length(image_url))
 		embed.image = new(image_url)
 

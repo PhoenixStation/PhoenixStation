@@ -22,3 +22,9 @@
 
 /datum/config_entry/string/roundend_embed_color
 	default = "ff4ff0"
+
+// PHOENIX EDIT START: Roundend improve
+/datum/config_entry/str_list/roundend_image_list
+	protection = CONFIG_ENTRY_LOCKED
+	default = list()
+// PHOENIX EDIT END
