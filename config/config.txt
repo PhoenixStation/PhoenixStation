@@ -18,6 +18,8 @@ $include map_vote.txt
 $include splurt/discord.txt
 $include splurt/fetish_content.txt
 $include splurt/game_options.txt
+# PHOENIX configs
+$include phoenix/phoenix_config.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
@@ -656,3 +658,7 @@ UPLOAD_LIMIT_ADMIN 5242880
 
 ## Uncomment to allow admins with +DEBUG to queue the next round to run the byond-tracy profiler.
 #ALLOW_TRACY_QUEUE
+
+## Tgui payloads larger than the 2kb limit for BYOND topic requests are split into roughly 1kb chunks and sent in sequence.
+## This config option limits the maximum chunk count for which the server will accept a payload, default is 32
+TGUI_MAX_CHUNK_COUNT 32

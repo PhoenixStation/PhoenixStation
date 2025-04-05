@@ -7,3 +7,24 @@
 /datum/config_entry/flag/discord_bunker
 
 /datum/config_entry/flag/forced_discord_stay
+
+/datum/config_entry/flag/roundend_embeds
+
+/datum/config_entry/string/roundend_ping_role
+
+/datum/config_entry/string/roundend_image_url
+
+/datum/config_entry/string/roundend_thumbnail_url
+
+/datum/config_entry/string/roundend_splashscreen_url
+
+/datum/config_entry/string/splashscreen_webserver_path
+
+/datum/config_entry/string/roundend_embed_color
+	default = "ff4ff0"
+
+// PHOENIX EDIT START: Roundend improve
+/datum/config_entry/str_list/roundend_image_list
+	protection = CONFIG_ENTRY_LOCKED
+	default = list()
+// PHOENIX EDIT END

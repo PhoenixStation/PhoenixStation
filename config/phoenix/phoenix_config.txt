@@ -1,0 +1,7 @@
+# Roundend image list
+## List of images to randomly choose from for roundend embed
+## One image URL per line
+#ROUNDEND_IMAGE_LIST
+#https://example.com/image1.png
+#https://example.com/image2.png
+#https://example.com/image3.png

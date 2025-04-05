@@ -1,6 +1,3 @@
-/turf/open/floor/bamboo/lavaland
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
-
 /turf/open/floor/wood/shadow
 	desc = "Stylish shadow wood."
 	icon = 'modular_zzplurt/icons/turf/floors.dmi'
