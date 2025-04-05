@@ -78,6 +78,39 @@
 	name = "trencher helmet replica"
 	desc = "A plastic helmet with purple paint applied. Protects as best as cardboard box labeled 'Bomb Shelter'."
 	armor_type = /datum/armor/none
+	uses_advanced_reskins = TRUE // Since polychromic no longer available at least allow us to reskin it after GWTB armies colors.
+	unique_reskin = list(
+		"Default (Purple)" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_helmet",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_helmet"
+		),
+		"Red" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_helmet_r",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_helmet_r"
+		),
+		"Green" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_helmet_g",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_helmet_g"
+		),
+		"Blue" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_helmet_b",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_helmet_b"
+		),
+		"Yellow" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_helmet_y",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_helmet_y"
+		)
+	)
 
 /// Original Colors
 /obj/item/clothing/head/helmet/goner/red
@@ -111,6 +144,39 @@
 	name = "trencher officer cap replica"
 	desc = "A cheap officer cap. Great for people with Napoleon complex."
 	armor_type = /datum/armor/none
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Default (Purple)" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_offcap",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_offcap"
+		),
+		"Red" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_offcap_r",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_offcap_r"
+		),
+		"Green" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_offcap_g",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_offcap_g"
+		),
+		"Blue" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_offcap_b",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_offcap_b"
+		),
+		"Yellow" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/head.dmi',
+			RESKIN_ICON_STATE = "goner_offcap_y",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_offcap_y"
+		)
+	)
 
 /// Officer Colors
 /obj/item/clothing/head/helmet/goner/officer/red

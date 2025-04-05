@@ -13,10 +13,10 @@
 		return
 
 	var/mob/living/carbon/human/human_self = self // Necessary for the soon to be merged refactor
-	var/list/obj/item/organ/external/genital/to_update = list()
+	var/list/obj/item/organ/genital/to_update = list()
 
 	// Get fluid amount from source genital
-	var/obj/item/organ/external/genital/fluid_source = partner.get_organ_slot(source_genital)
+	var/obj/item/organ/genital/fluid_source = partner.get_organ_slot(source_genital)
 	if(!fluid_source || !fluid_source.internal_fluid_count)
 		return
 
@@ -27,39 +27,39 @@
 
 	// Handle belly inflation for oral, vaginal and anal
 	if(slot in list("mouth", ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS, ORGAN_SLOT_BELLY))
-		var/obj/item/organ/external/genital/belly/mob_belly = human_self.get_organ_slot(ORGAN_SLOT_BELLY)
+		var/obj/item/organ/genital/belly/mob_belly = human_self.get_organ_slot(ORGAN_SLOT_BELLY)
 		if(!mob_belly && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			mob_belly = new
 			mob_belly.build_from_dna(human_self.dna, ORGAN_SLOT_BELLY)
 			mob_belly.Insert(human_self, 0, FALSE)
-			mob_belly.genital_size = 2
+			mob_belly.genital_size = BELLY_MIN_SIZE
 
 		if(mob_belly && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/belly_enlargement))
 			var/prev_size = mob_belly.genital_size
-			mob_belly.genital_size = min(mob_belly.genital_size + growth_amount, 7)
+			mob_belly.genital_size = min(mob_belly.genital_size + growth_amount, BELLY_MAX_SIZE)
 			to_update += mob_belly
 			if(mob_belly.genital_size > prev_size)
 				human_self.visible_message(span_lewd("\The <b>[human_self]</b>'s belly bloats outwards as it gets pumped full of [lowertext(initial(fluid_source.internal_fluid_datum:name))]!"))
 
 		// Handle butt inflation when belly gets big enough from anal
 		if(slot == ORGAN_SLOT_ANUS && mob_belly.genital_size >= 3)
-			var/obj/item/organ/external/genital/butt/mob_butt = human_self.get_organ_slot(ORGAN_SLOT_BUTT)
+			var/obj/item/organ/genital/butt/mob_butt = human_self.get_organ_slot(ORGAN_SLOT_BUTT)
 			if(!mob_butt && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 				mob_butt = new
 				mob_butt.build_from_dna(human_self.dna, ORGAN_SLOT_BUTT)
 				mob_butt.Insert(human_self, 0, FALSE)
-				mob_butt.genital_size = 2
+				mob_butt.genital_size = BUTT_MIN_SIZE
 
 			if(mob_butt && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/butt_enlargement))
 				var/prev_size = mob_butt.genital_size
-				mob_butt.genital_size = min(mob_butt.genital_size + growth_amount, 8)
+				mob_butt.genital_size = min(mob_butt.genital_size + growth_amount, BUTT_MAX_SIZE)
 				to_update += mob_butt
 				if(mob_butt.genital_size > prev_size)
 					human_self.visible_message(span_lewd("\The <b>[human_self]</b>'s ass swells outwards as it gets pumped full of [lowertext(initial(fluid_source.internal_fluid_datum:name))]!"))
 
 	// Handle penis and testicles inflation
 	else if(slot == ORGAN_SLOT_PENIS)
-		var/obj/item/organ/external/genital/penis/mob_penis = human_self.get_organ_slot(ORGAN_SLOT_PENIS)
+		var/obj/item/organ/genital/penis/mob_penis = human_self.get_organ_slot(ORGAN_SLOT_PENIS)
 		if(!mob_penis && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			// If the user has not defined their own prefs for their penis type, try to assign a default based on their species
 			var/list/species_to_penis = list(
@@ -115,7 +115,7 @@
 			if(mob_penis.genital_size > prev_size || mob_penis.girth > prev_girth)
 				human_self.visible_message(span_lewd("\The <b>[human_self]</b>'s penis swells larger as it gets pumped full of [lowertext(initial(fluid_source.internal_fluid_datum:name))]!"))
 
-		var/obj/item/organ/external/genital/testicles/mob_testicles = human_self.get_organ_slot(ORGAN_SLOT_TESTICLES)
+		var/obj/item/organ/genital/testicles/mob_testicles = human_self.get_organ_slot(ORGAN_SLOT_TESTICLES)
 		if(!mob_testicles && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			mob_testicles = new
 			mob_testicles.build_from_dna(human_self.dna, ORGAN_SLOT_TESTICLES)
@@ -131,7 +131,7 @@
 
 	// Handle breast inflation
 	else if(slot == ORGAN_SLOT_BREASTS)
-		var/obj/item/organ/external/genital/breasts/mob_breasts = human_self.get_organ_slot(ORGAN_SLOT_BREASTS)
+		var/obj/item/organ/genital/breasts/mob_breasts = human_self.get_organ_slot(ORGAN_SLOT_BREASTS)
 		if(!mob_breasts && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			// If the user has not defined their own prefs for their breast type, default to two breasts
 			if (human_self.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] == "None")
@@ -140,7 +140,7 @@
 			mob_breasts = new
 			mob_breasts.build_from_dna(human_self.dna, ORGAN_SLOT_BREASTS)
 			mob_breasts.Insert(human_self, 0, FALSE)
-			mob_breasts.genital_size = 2
+			mob_breasts.genital_size = BREASTS_MIN_SIZE
 
 			if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || human_self.is_topless())
 				human_self.visible_message(span_notice("[human_self]'s bust suddenly expands!"))
@@ -151,7 +151,7 @@
 
 		if(mob_breasts && human_self.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 			var/prev_size = mob_breasts.genital_size
-			mob_breasts.genital_size = min(mob_breasts.genital_size + growth_amount, 16)
+			mob_breasts.genital_size = min(mob_breasts.genital_size + growth_amount, BREASTS_MAX_SIZE)
 			to_update += mob_breasts
 			if(mob_breasts.genital_size > prev_size)
 				if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || human_self.is_topless())
@@ -159,5 +159,5 @@
 				else
 					human_self.visible_message(span_lewd("\The area around [human_self]'s chest suddenly bounces a bit."))
 
-	for(var/obj/item/organ/external/genital/genital in to_update)
+	for(var/obj/item/organ/genital/genital in to_update)
 		call(/datum/reagent/drug/aphrodisiac::update_appearance())(human_self, genital)

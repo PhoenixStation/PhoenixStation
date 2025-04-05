@@ -1,4 +1,4 @@
-/obj/item/organ/external/mandibles
+/obj/item/organ/mandibles
 	name = "mandibles"
 	desc = "Fancy lips for those who think they're above having lips."
 	icon = 'modular_zzplurt/icons/obj/medical/organs/organs.dmi'
@@ -19,8 +19,8 @@
 	layers = EXTERNAL_FRONT|EXTERNAL_ADJACENT
 	feature_key = "mandibles"
 
-/datum/bodypart_overlay/mutant/mandibles/can_draw_on_bodypart(mob/living/carbon/human/human)
-	if(human.head?.flags_inv & HIDESNOUT)
+/datum/bodypart_overlay/mutant/mandibles/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
+	if(bodypart_owner.owner.head?.flags_inv & HIDESNOUT)
 		return FALSE
 	return TRUE
 
@@ -28,7 +28,7 @@
 	return SSaccessories.sprite_accessories["mandibles"]
 
 
-/obj/item/organ/external/spinneret
+/obj/item/organ/spinneret
 	name = "spinneret"
 	desc = "This is where your icecream comes from."
 	icon = 'modular_zzplurt/icons/obj/medical/organs/organs.dmi'
@@ -49,7 +49,10 @@
 	layers = ALL_EXTERNAL_OVERLAYS
 	feature_key = "spinneret"
 
-/datum/bodypart_overlay/mutant/spinneret/can_draw_on_bodypart(mob/living/carbon/human/human)
+/datum/bodypart_overlay/mutant/spinneret/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
+	var/mob/living/carbon/human/human = bodypart_owner.owner
+	if(!istype(human))
+		return FALSE
 	if((human.w_uniform?.flags_inv | human.wear_suit?.flags_inv) & HIDEMUTWINGS) //sure ig
 		return FALSE
 	return TRUE
@@ -58,7 +61,7 @@
 	return SSaccessories.sprite_accessories["spinneret"]
 
 
-/obj/item/organ/external/arachnid_legs
+/obj/item/organ/arachnid_legs
 	name = "spider legs"
 	desc = "Objectively inferior to regular legs." //idk i suck at descs
 	icon = 'modular_zzplurt/icons/obj/medical/organs/organs.dmi'
@@ -79,7 +82,10 @@
 	layers = ALL_EXTERNAL_OVERLAYS
 	feature_key = "arachnid_legs"
 
-/datum/bodypart_overlay/mutant/arachnid_legs/can_draw_on_bodypart(mob/living/carbon/human/human)
+/datum/bodypart_overlay/mutant/arachnid_legs/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
+	var/mob/living/carbon/human/human = bodypart_owner.owner
+	if(!istype(human))
+		return FALSE
 	if((human.w_uniform?.flags_inv | human.wear_suit?.flags_inv) & HIDEMUTWINGS) //sure ig
 		return FALSE
 	return TRUE

@@ -175,8 +175,41 @@
 
 /obj/item/clothing/under/goner/fake
 	name = "trencher uniform replica"
-	desc = "A 90% replica of No Man's Land-type uniform."
+	desc = "A 90% replica of No Man's Land-type uniform. Obviously won't protect you from the blastwave."
 	armor_type = /datum/armor/clothing_under/none
+	uses_advanced_reskins = TRUE // Since polychromic no longer available at least allow us to reskin it after GWTB armies colors.
+	unique_reskin = list(
+		"Default (Purple)" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "goner_uniform",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_uniform"
+		),
+		"Red" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "goner_uniform_r",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_uniform_r"
+		),
+		"Green" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "goner_uniform_g",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_uniform_g"
+		),
+		"Blue" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "goner_uniform_b",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_uniform_b"
+		),
+		"Yellow" = list(
+			RESKIN_ICON = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "goner_uniform_y",
+			RESKIN_WORN_ICON = 'modular_zzplurt/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "goner_uniform_y"
+		)
+	)
 
 //
 /obj/item/clothing/under/goner/red
@@ -263,6 +296,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //
+/* They exist nonmodularly and adding them causes issues with the loadout.
 /obj/item/clothing/under/suit/pencil
 	name = "black pencilskirt"
 	desc = "A clean white shirt with a tight-fitting black pencilskirt."
@@ -367,6 +401,7 @@
 	name = "red shirt with white skirt"
 	desc = "No time. Busy gathering boys."
 	icon_state = "helltakerskirt"
+*/
 
 //
 /obj/item/clothing/under/rank/civilian/clown/clussy_outfit

@@ -15,11 +15,11 @@
 	item_path = /obj/item/clothing/head/invisihat
 
 // GWTB
-/datum/loadout_item/head/gonerhelm
+/datum/loadout_item/head/blastwave_helmet
 	name = "trencher helmet"
 	item_path = /obj/item/clothing/head/helmet/goner/fake
 
-/datum/loadout_item/head/goneroffcap
+/datum/loadout_item/head/blastwave_cap
 	name = "trencher officer cap"
 	item_path = /obj/item/clothing/head/helmet/goner/officer/fake
 

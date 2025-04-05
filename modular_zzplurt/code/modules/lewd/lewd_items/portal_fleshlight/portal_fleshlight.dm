@@ -7,7 +7,6 @@
 	icon = 'modular_zzplurt/icons/obj/lewd/fleshlight.dmi'
 	icon_state = "unpaired"
 	w_class = WEIGHT_CLASS_SMALL
-	lewd_slot_flags = LEWD_SLOT_PENIS
 
 	/// The linked portal panties
 	var/obj/item/clothing/sextoy/portal_panties/linked_panties = null
@@ -128,7 +127,7 @@
 
 /obj/item/clothing/sextoy/portal_fleshlight/attack(mob/living/target, mob/living/user, params)
 	. = ..()
-	if(!linked_panties?.loc || !istype(linked_panties.loc, /mob/living/carbon/human))
+	if(!istype(linked_panties?.loc, /mob/living/carbon/human))
 		to_chat(user, span_warning("The portal fleshlight isn't linked to any worn portal panties!"))
 		return
 
@@ -144,6 +143,47 @@
 	else
 		fleshlight_target = user.zone_selected
 
+	perform_interaction(user, target, target_wearer, panty_target, fleshlight_target)
+
+/obj/item/clothing/sextoy/portal_fleshlight/attackby(obj/item/W, mob/user, params)
+	. = ..()
+
+	// Handle portal fleshlight interaction
+	if(istype(W, /obj/item/clothing/sextoy/portal_fleshlight))
+		var/obj/item/clothing/sextoy/portal_fleshlight/other_fleshlight = W
+
+		// Check if both fleshlights have linked panties
+		if(!linked_panties || !other_fleshlight.linked_panties)
+			to_chat(user, span_warning("Both portal fleshlights need to be linked to portal panties!"))
+			return
+
+		// Check if both panties are being worn
+		if(!istype(linked_panties.loc, /mob/living/carbon/human) || !istype(other_fleshlight.linked_panties.loc, /mob/living/carbon/human))
+			to_chat(user, span_warning("Both portal panties need to be worn by someone!"))
+			return
+
+		var/mob/living/carbon/human/target = linked_panties.loc
+		var/mob/living/carbon/human/wearer = other_fleshlight.linked_panties.loc
+
+		// Get panty target from the other fleshlight's panties
+		var/panty_target = other_fleshlight.linked_panties.current_target
+
+		// Determine fleshlight target based on conditions
+		var/fleshlight_target
+		if(linked_panties.current_target == ORGAN_SLOT_PENIS && (other_fleshlight.current_target == URETHRA_TOP || other_fleshlight.current_target == URETHRA_BOTTOM))
+			fleshlight_target = other_fleshlight.current_target
+		else
+			fleshlight_target = linked_panties.current_target
+
+		perform_interaction(user, target, wearer, panty_target, fleshlight_target)
+		return
+
+	// Handle portal panties linking
+	if(istype(W, /obj/item/clothing/sextoy/portal_panties))
+		link_panties(W, user)
+		return
+
+/obj/item/clothing/sextoy/portal_fleshlight/proc/perform_interaction(mob/living/user, mob/living/target, mob/living/wearer, panty_target, fleshlight_target)
 	// Get the interaction name from the map
 	var/interaction_name = interaction_map[panty_target]?[fleshlight_target]
 	if(!interaction_name)
@@ -153,20 +193,12 @@
 	// Find the interaction in SSinteractions
 	var/datum/interaction/lewd/portal/interaction_to_try = SSinteractions.interactions[interaction_name]
 
-	if(!interaction_to_try)
+	if(!interaction_to_try?.allow_act(target, wearer))
 		to_chat(user, span_warning("You can't use the portal fleshlight like this!"))
 		return
 
-	if(!interaction_to_try.allow_act(user, target_wearer))
-		to_chat(user, span_warning("You can't use the portal fleshlight like this!"))
-		return
-
-	interaction_to_try.act(user, target_wearer)
-	target_wearer.do_jitter_animation()
-
-/obj/item/clothing/sextoy/portal_fleshlight/attackby(obj/item/W, mob/user, params)
-	. = ..()
-	link_panties(W, user)
+	interaction_to_try.act(target, wearer)
+	wearer.do_jitter_animation()
 
 /obj/item/clothing/sextoy/portal_fleshlight/proc/link_panties(obj/item/clothing/sextoy/portal_panties/panties, mob/living/user)
 	if(!istype(panties))
@@ -236,22 +268,22 @@
 		useable = FALSE
 		return
 
-	var/obj/item/organ/external/genital/target_organ
+	var/obj/item/organ/genital/target_organ
 
 	// Get the appropriate genital based on panties target
 	if(linked_panties.current_target == ORGAN_SLOT_VAGINA)
 		target_organ = target_wearer.get_organ_slot(ORGAN_SLOT_VAGINA)
-		if(!target_organ || !istype(target_organ, /obj/item/organ/external/genital/vagina))
+		if(!target_organ || !istype(target_organ, /obj/item/organ/genital/vagina))
 			useable = FALSE
 			return
 	else if(linked_panties.current_target == ORGAN_SLOT_PENIS)
 		target_organ = target_wearer.get_organ_slot(ORGAN_SLOT_PENIS)
-		if(!target_organ || !istype(target_organ, /obj/item/organ/external/genital/penis))
+		if(!target_organ || !istype(target_organ, /obj/item/organ/genital/penis))
 			useable = FALSE
 			return
 	else if(linked_panties.current_target == ORGAN_SLOT_ANUS)
 		target_organ = target_wearer.get_organ_slot(ORGAN_SLOT_ANUS)
-		if(!target_organ || !istype(target_organ, /obj/item/organ/external/genital/anus))
+		if(!target_organ || !istype(target_organ, /obj/item/organ/genital/anus))
 			useable = FALSE
 			return
 
@@ -280,7 +312,7 @@
 		var/mutable_appearance/organ
 		switch(linked_panties.current_target)
 			if(ORGAN_SLOT_VAGINA)
-				var/obj/item/organ/external/genital/vagina/vag = target_organ
+				var/obj/item/organ/genital/vagina/vag = target_organ
 				organ = mutable_appearance('modular_zzplurt/icons/obj/lewd/fleshlight.dmi', "portal_vag")
 				if(vag.uses_skin_color)
 					organ.color = target_wearer.dna.features["mcolor"]
@@ -292,7 +324,7 @@
 				organ = mutable_appearance('modular_zzplurt/icons/obj/lewd/fleshlight.dmi', "portal_anus")
 				organ.color = target_organ.color
 			if(ORGAN_SLOT_PENIS)
-				var/obj/item/organ/external/genital/penis/penis = target_organ
+				var/obj/item/organ/genital/penis/penis = target_organ
 				organ = mutable_appearance('modular_zzplurt/icons/obj/lewd/dildo.dmi', "penis")
 				switch(penis.genital_name)
 					if("Human")

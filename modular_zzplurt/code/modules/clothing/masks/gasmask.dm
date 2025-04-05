@@ -5,9 +5,10 @@
 	armor_type = /datum/armor/none
 
 // GWTB-inspired thing wooo
+// Nopeman here: It seems (almost) every gasmask now have filter, so description is now changed.
 /obj/item/clothing/mask/gas/goner
-	name = "operative trencher gas mask"
-	desc = "A protective, head-covering mask. This gas mask model is made by mooks and romantically apocalyptic people. It even have proper filter on!"
+	name = "upgraded trencher gas mask"
+	desc = "A protective, head-covering mask. This gas mask model is made by mooks and romantically apocalyptic people. This one will give small protection."
 	icon = 'modular_zzplurt/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_zzplurt/icons/mob/clothing/mask.dmi'
 	worn_icon_muzzled = 'modular_zzplurt/icons/mob/clothing/mask_muzzle.dmi'
@@ -28,5 +29,5 @@
 
 /obj/item/clothing/mask/gas/goner/fake
 	name = "trencher gas mask"
-	desc = "A head-covering mask. This gas mask model is made by mooks and romantically apocalyptic people. Still isn't good for blocking gas flow."
+	desc = "A head-covering mask. This gas mask model is made by mooks and romantically apocalyptic people. Still might be not good for blocking gas flow."
 	armor_type = /datum/armor/none

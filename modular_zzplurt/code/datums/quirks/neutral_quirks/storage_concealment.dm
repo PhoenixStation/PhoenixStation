@@ -1,4 +1,4 @@
-// REMOVED QUIRK - Disabled in favor of new NIFSoft method
+// Alternative to NIFSoft method
 /datum/quirk/storage_concealment
 	name = "Dorsualiphobic Augmentation"
 	desc = "You despise the idea of being seen wearing any type of back-mounted storage apparatus! A new technology shields you from the immense shame you may experience, by hiding your equipped backpack."
@@ -7,7 +7,6 @@
 	lose_text = span_notice("Your Chameleon Storage Concealment Implant encounters a critical error.")
 	medical_record_text = "Patient has exhibited concerns about being seen wearing a backpack."
 	icon = FA_ICON_BRIEFCASE
-	hidden_quirk = TRUE
 
 	// UNUSED: Enable by setting these values to TRUE
 	// The shame is unbearable

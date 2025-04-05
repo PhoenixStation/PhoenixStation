@@ -15,6 +15,7 @@
 #define TRAIT_CHOKE_SLUT		"choke_slut"
 /// Trait for quirk: Bloodsucker Fledgling
 #define TRAIT_BLOODFLEDGE		"bloodfledge"
+#define TRAIT_NO_BLOOD_REGEN "no_blood_regen"
 /// UNUSED - Legacy trait for quirk: Incubus
 #define TRAIT_INCUBUS			"incubus"
 /// UNUSED - Legacy trait for quirk: Succubus
@@ -77,6 +78,10 @@
 #define TRAIT_VACUUM_RESIST		"vacuum_resist"
 /// Trait for quirk: Overweight
 #define TRAIT_OVERWEIGHT		"overweight"
+/// Trait for quirk: Trashcan
+#define TRAIT_TRASHCAN			"trashcan"
+/// Trait for quirk: Quick Step
+#define TRAIT_SPEEDY_STEP		"speedy_step"
 
 ///
 // Element traits

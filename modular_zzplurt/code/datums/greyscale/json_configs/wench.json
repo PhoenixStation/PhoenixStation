@@ -18,5 +18,25 @@
 			"blend_mode": "overlay",
 			"color_ids": [ 3 ]
 		}
+	],
+	"wench_d": [
+		{
+			"type": "icon_state",
+			"icon_state": "wench_d-1",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "wench_d-2",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "wench_d-3",
+			"blend_mode": "overlay",
+			"color_ids": [ 3 ]
+		}
 	]
 }

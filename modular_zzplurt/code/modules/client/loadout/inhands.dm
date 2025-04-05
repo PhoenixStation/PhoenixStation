@@ -202,6 +202,8 @@
 	name = "Spare cassette tape"
 	item_path = /obj/item/tape/random
 
+/* Exists in nonmodular code
 /datum/loadout_item/pocket_items/dyespray
 	name = "Hair dye spray"
 	item_path = /obj/item/dyespray
+*/

@@ -25,7 +25,9 @@
 
 /datum/quirk/hallowed/post_add()
 	// Makes the user holy.
-	quirk_holder.mind?.holy_role = HOLY_ROLE_DEACON
+	// Make sure their previous holy role isn't messed with.
+	if(quirk_holder.mind?.holy_role == NONE)
+		quirk_holder.mind?.holy_role = HOLY_ROLE_DEACON
 
 /datum/quirk/hallowed/remove()
 	// Define quirk mob.

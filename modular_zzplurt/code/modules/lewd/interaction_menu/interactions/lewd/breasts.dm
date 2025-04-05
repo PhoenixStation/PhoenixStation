@@ -20,7 +20,7 @@
 	target_arousal = 2
 
 /datum/interaction/lewd/breastfeed/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/obj/item/organ/external/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(!breasts?.internal_fluid_datum)
 		return
 
@@ -34,7 +34,7 @@
 
 /datum/interaction/lewd/breastfeed/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
-	var/obj/item/organ/external/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/genital/breasts/breasts = user.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(breasts?.internal_fluid_datum)
 		// Calculate milk amount based on how full the breasts are (0.5 to 2 multiplier)
 		var/milk_multiplier = 0.5
@@ -70,21 +70,23 @@
 	target_arousal = 5
 
 /datum/interaction/lewd/titgrope/act(mob/living/user, mob/living/target)
-	var/obj/item/reagent_containers/liquid_container
+	var/obj/item/liquid_container
 	var/list/original_messages = message.Copy()
 
 	// Check for container
 	var/obj/item/cached_item = user.get_active_held_item()
-	if(istype(cached_item, /obj/item/reagent_containers))
+	if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 		liquid_container = cached_item
 	else
 		cached_item = user.pulling
-		if(istype(cached_item, /obj/item/reagent_containers))
+		if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 			liquid_container = cached_item
 
 	if(liquid_container)
 		message = list("milks %TARGET%'s breasts into \the [liquid_container].")
+		interaction_modifier_flags |= INTERACTION_OVERRIDE_FLUID_TRANSFER
 		. = ..()
+		interaction_modifier_flags &= ~INTERACTION_OVERRIDE_FLUID_TRANSFER
 		message = original_messages
 		return
 
@@ -120,18 +122,18 @@
 /datum/interaction/lewd/titgrope/post_interaction(mob/living/user, mob/living/target)
 	. = ..()
 	if(interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER)
-		var/obj/item/reagent_containers/liquid_container
+		var/obj/item/liquid_container
 
 		var/obj/item/cached_item = user.get_active_held_item()
-		if(istype(cached_item, /obj/item/reagent_containers))
+		if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 			liquid_container = cached_item
 		else
 			cached_item = user.pulling
-			if(istype(cached_item, /obj/item/reagent_containers))
+			if(istype(cached_item) && cached_item.is_refillable() && cached_item.is_drainable())
 				liquid_container = cached_item
 
 		if(liquid_container)
-			var/obj/item/organ/external/genital/breasts/breasts = target.get_organ_slot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/genital/breasts/breasts = target.get_organ_slot(ORGAN_SLOT_BREASTS)
 			if(breasts?.internal_fluid_datum)
 				// Calculate milk amount based on how full the breasts are (0.5 to 2 multiplier)
 				var/milk_multiplier = 0.5

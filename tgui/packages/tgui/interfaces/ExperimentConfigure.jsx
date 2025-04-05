@@ -1,6 +1,4 @@
 import { sortBy } from 'common/collections';
-
-import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -10,7 +8,9 @@ import {
   Section,
   Table,
   Tooltip,
-} from '../components';
+} from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 const ExperimentStages = (props) => {
@@ -127,7 +127,12 @@ export const ExperimentConfigure = (props) => {
       <Window.Content>
         <Flex direction="column" height="100%">
           <Flex.Item mb={1}>
-            <Section title="Servers">
+            {/* SPLURT TEMPORARY FIX - No scrollwheel - Remove when fixed upstream */}
+            <Section
+              title="Servers"
+              style={{ overflowY: 'auto', overflowX: 'hidden' }}
+            >
+              {/* SPLURT TEMPORARY FIX END*/}
               <Box>
                 {webs.size > 0
                   ? 'Please select a techweb to connect to...'
@@ -139,11 +144,17 @@ export const ExperimentConfigure = (props) => {
                 ))}
             </Section>
           </Flex.Item>
-          <Flex.Item mb={has_start_callback ? 1 : 0} grow={1}>
+          {/* SPLURT TEMPORARY FIX - No scrollwheel - Remove when fixed upstream */}
+          <Flex.Item
+            mb={has_start_callback ? 1 : 0}
+            style={{ flex: 1, minHeight: 0 }}
+          >
+            {/* SPLURT TEMPORARY FIX END*/}
             {techwebs.some((e) => e.selected) && (
               <Section
                 title="Experiments"
                 className="ExperimentConfigure__ExperimentsContainer"
+                style={{ height: '100%', overflowY: 'auto' }} // SPLURT TEMPORARY FIX - No scrollwheel - Remove when fixed upstream
               >
                 <Flex.Item mb={1}>
                   {(experiments.length &&
