@@ -246,6 +246,7 @@ export const DmTarget = new Juke.Target({
     'modular_zzsplurt/**', ///SPLURT EDIT ADDITION - Making the CBT work
     'modular_zzzphoenix/**', ///PHOENIX EDIT ADDITION - Making the CBT work
     'sound/**',
+    'tgui/public/tgui.html',
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],

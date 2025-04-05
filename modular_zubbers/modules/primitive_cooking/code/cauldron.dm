@@ -4,7 +4,7 @@
 	icon = 'modular_zubbers/icons/obj/machines/cauldron.dmi'
 	icon_state = "cauldron_back_off"
 	density = TRUE
-	pass_flags_self = PASSMACHINE | PASSTABLE| LETPASSTHROW // It's roughly the height of a table.
+	pass_flags_self = PASSMACHINE | PASSTABLE | LETPASSTHROW // It's roughly the height of a table.
 	layer = BELOW_OBJ_LAYER
 	use_power = FALSE
 	circuit = null
@@ -17,7 +17,7 @@
 	var/max_n_of_items = 10
 	/// Ingredients - may only contain /atom/movables
 	var/list/ingredients = list()
-	/// When this is the nth ingredient, whats its pixel_x?
+	/// When this is the nth ingredient, whats its pixel_w?
 	var/list/ingredient_shifts_x = list(
 		-1,
 		1,
@@ -26,7 +26,7 @@
 		-3,
 		0,
 	)
-	/// When this is the nth ingredient, whats its pixel_y?
+	/// When this is the nth ingredient, whats its pixel_z?
 	var/list/ingredient_shifts_y = list(
 		7,
 		6,
@@ -52,6 +52,9 @@
 
 	if(!in_range(user, src) && !isobserver(user))
 		. += span_warning("You're too far away to examine [src]'s contents!")
+		return
+	if(operating)
+		. += span_notice("\The [src] is boiling.")
 		return
 
 	if(length(ingredients))
@@ -120,8 +123,8 @@
 			CAULDRON_INGREDIENT_OVERLAY_SIZE / icon_dimensions["height"],
 		)
 
-		ingredient_overlay.pixel_x = ingredient_shifts_x[(ingredient_count % ingredient_shifts_x.len) + 1]
-		ingredient_overlay.pixel_y = ingredient_shifts_y[(ingredient_count % ingredient_shifts_y.len) + 1]
+		ingredient_overlay.pixel_w = ingredient_shifts_x[(ingredient_count % ingredient_shifts_x.len) + 1]
+		ingredient_overlay.pixel_z = ingredient_shifts_y[(ingredient_count % ingredient_shifts_y.len) + 1]
 		ingredient_overlay.layer = FLOAT_LAYER
 		ingredient_overlay.plane = FLOAT_PLANE
 		ingredient_overlay.blend_mode = BLEND_INSET_OVERLAY
@@ -169,56 +172,69 @@
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/machinery/cauldron/attackby(obj/item/item, mob/living/user, params)
+/obj/machinery/cauldron/item_interaction(mob/living/user, obj/item/item, list/modifiers)
 	if(operating)
-		return
+		return NONE
+
+	if(item.item_flags & ABSTRACT)
+		return NONE
 
 	if(!anchored)
 		if(IS_EDIBLE(item))
 			balloon_alert(user, "not secured!")
-			return TRUE
-		return ..()
+			return ITEM_INTERACT_BLOCKING
+		return NONE
 
-	if(istype(item, /obj/item/storage))
-		var/obj/item/storage/tray = item
-		var/loaded = 0
+	if(item.w_class <= WEIGHT_CLASS_NORMAL && !user.combat_mode && isnull(item.atom_storage))
+		if(ingredients.len >= max_n_of_items)
+			balloon_alert(user, "it's full!")
+			return ITEM_INTERACT_BLOCKING
+		if(!user.transferItemToLoc(item, src))
+			balloon_alert(user, "it's stuck to your hand!")
+			return ITEM_INTERACT_BLOCKING
 
-		if(!istype(item, /obj/item/storage/bag/tray))
-			// Non-tray dumping requires a do_after
-			to_chat(user, span_notice("You start dumping out the contents of [item] into [src]..."))
-			if(!do_after(user, 2 SECONDS, target = tray))
-				return
+		ingredients += item
+		open(autoclose = 0.6 SECONDS)
+		user.visible_message(span_notice("[user] adds \a [item] to \the [src]."), span_notice("You add [item] to \the [src]."))
+		update_appearance()
+		return ITEM_INTERACT_SUCCESS
 
-		for(var/obj/tray_item in tray.contents)
-			if(!IS_EDIBLE(tray_item))
-				continue
-			if(ingredients.len >= max_n_of_items)
-				balloon_alert(user, "it's full!")
-				return TRUE
-			if(tray.atom_storage.attempt_remove(tray_item, src))
-				loaded++
-				ingredients += tray_item
-		if(loaded)
-			open()
-			to_chat(user, span_notice("You insert [loaded] items into \the [src]."))
-			update_appearance()
+/obj/machinery/cauldron/item_interaction_secondary(mob/living/user, obj/item/tool, list/modifiers)
+	if (isnull(tool.atom_storage))
+		return
+	handle_dumping(user, tool)
+	return ITEM_INTERACT_BLOCKING
+
+/obj/machinery/cauldron/proc/handle_dumping(mob/living/user, obj/item/tool)
+	if(isnull(tool.atom_storage))
 		return
 
-	if(item.w_class <= WEIGHT_CLASS_NORMAL && !istype(item, /obj/item/storage) && !user.combat_mode)
+	var/loaded = 0
+	if(!istype(tool, /obj/item/storage/bag/tray))
+		// Non-tray dumping requires a do_after
+		to_chat(user, span_notice("You start dumping out the contents of [tool] into [src]..."))
+		if(!do_after(user, 2 SECONDS, target = tool))
+			return
+
+	for(var/obj/tray_item in tool.contents)
+		if(!IS_EDIBLE(tray_item))
+			continue
 		if(ingredients.len >= max_n_of_items)
 			balloon_alert(user, "it's full!")
 			return TRUE
-		if(!user.transferItemToLoc(item, src))
-			balloon_alert(user, "it's stuck to your hand!")
-			return FALSE
+		if(tool.atom_storage.attempt_remove(tray_item, src))
+			loaded++
+			ingredients += tray_item
 
-		ingredients += item
-		open()
-		user.visible_message(span_notice("[user] adds \a [item] to \the [src]."), span_notice("You add [item] to \the [src]."))
+	if(loaded)
+		open(autoclose = 0.6 SECONDS)
+		to_chat(user, span_notice("You insert [loaded] items into \the [src]."))
 		update_appearance()
-		return
 
-	return ..()
+/obj/machinery/cauldron/mouse_drop_receive(obj/item/tool, mob/user, params)
+	if (!istype(tool) || isnull(tool.atom_storage))
+		return
+	handle_dumping(user, tool)
 
 /obj/machinery/cauldron/attack_hand_secondary(mob/user, list/modifiers)
 	if(user.can_perform_action(src))
@@ -290,7 +306,7 @@
  * * cooker - The mob that initiated the cook cycle
  */
 /obj/machinery/cauldron/proc/start(mob/cooker)
-	visible_message(span_notice("\The [src] turns on."), null, span_hear("You hear bubbling as the cauldron ignites."))
+	visible_message(span_notice("\The [src] heats up."), null, span_hear("You hear bubbling as the cauldron ignites."))
 	operating = TRUE
 	update_appearance()
 	cook_loop(cycles = 10, cooker = cooker)
