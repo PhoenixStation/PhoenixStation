@@ -54,10 +54,6 @@
 		sound = SSstation.announcer.get_rand_alert_sound()
 	else if(SSstation.announcer.event_sounds[sound])
 		sound = SSstation.announcer.event_sounds[sound]
-	// SPLURT EDIT ADDITION - default announcer sounds for unset announcer keys
-	else if(GLOB.announcer_keys.Find(sound))
-		sound = SSstation.announcer.get_rand_alert_sound()
-	// SPLURT EDIT ADDITION END
 
 	var/header
 	switch(type)
