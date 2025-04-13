@@ -5,13 +5,17 @@
 
 /obj/item/hilbertshotel/ghostdojo/attack_hand(mob/user, list/modifiers)
 	. = ..()
-	if(.)
-		return
-	return promptAndCheckIn(user, user)
-
+	// SPLURT REMOVAL START - Hilbert's Hotel - Refactored in modular, see modular_zzplurt\code\modules\hilbertshotel\hilbertshotel.dm
+	// if(.)
+	// 	return
+	// return promptAndCheckIn(user, user)
+	// SPLURT REMOVAL END
 // borgos need love too
 /obj/item/hilbertshotel/ghostdojo/attack_robot(mob/living/user)
 	attack_hand(user)
+
+/datum/map_template/ghost_cafe_rooms
+	name = "Hilbert's Hotel"
 
 /datum/map_template/ghost_cafe_rooms/apartment
 	name = "Apartment"
@@ -64,3 +68,23 @@
 /datum/map_template/ghost_cafe_rooms/grotto2
 	name = "Grotto (Night)"
 	mappath = "modular_skyrat/modules/hotel_rooms/grottoalt.dmm"
+
+/datum/map_template/ghost_cafe_rooms/foxbar
+	name = "Fox Bar"
+	mappath = "modular_skyrat/modules/hotel_rooms/foxbar.dmm"
+
+/datum/map_template/ghost_cafe_rooms/nightclub
+	name = "The Nightclub"
+	mappath = "modular_skyrat/modules/hotel_rooms/nightclub.dmm"
+
+/datum/map_template/ghost_cafe_rooms/eva
+	name = "EVA"
+	mappath = "modular_skyrat/modules/hotel_rooms/eva.dmm"
+
+/datum/map_template/ghost_cafe_rooms/oasis
+	name = "Oasis"
+	mappath = "modular_skyrat/modules/hotel_rooms/oasis.dmm"
+
+/datum/map_template/ghost_cafe_rooms/oasisalt
+	name = "Oasis (Night)"
+	mappath = "modular_skyrat/modules/hotel_rooms/oasisalt.dmm"

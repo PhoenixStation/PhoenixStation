@@ -1,4 +1,4 @@
-// PHOENIX EDIT: Remove Rat
+// PHOENIX EDIT: Remove custom announcers
 /*
 /datum/station_trait/announcement_intern
 	name = "Announcement rat"
@@ -12,7 +12,6 @@
 /datum/station_trait/announcement_medbot/New()
 	blacklist += list(/datum/station_trait/announcement_dagoth)
 	. = ..()
-*/
 
 /datum/station_trait/announcement_dagoth
 	name = "Announcement Sixth House"
@@ -25,3 +24,4 @@
 /datum/station_trait/announcement_dagoth/New()
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/dagoth_ur
+*/

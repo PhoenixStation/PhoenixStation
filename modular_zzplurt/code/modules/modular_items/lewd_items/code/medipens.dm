@@ -8,6 +8,7 @@
 	righthand_file = 'modular_zzplurt/icons/mob/inhands/equipment/medical_righthand.dmi'
 	icon_state = "crocinpen"
 	inhand_icon_state = "crocinpen"
+	base_icon_state = "crocinpen"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 30)
 
 /obj/item/reagent_containers/hypospray/medipen/crocin/plus
@@ -20,6 +21,7 @@
 	righthand_file = 'modular_zzplurt/icons/mob/inhands/equipment/medical_righthand.dmi'
 	icon_state = "hcrocinpen"
 	inhand_icon_state = "hcrocinpen"
+	base_icon_state = "hcrocinpen"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 30)
 
 /obj/item/reagent_containers/hypospray/medipen/breastgrowth
@@ -32,6 +34,7 @@
 	righthand_file = 'modular_zzplurt/icons/mob/inhands/equipment/medical_righthand.dmi'
 	icon_state = "succupen"
 	inhand_icon_state = "succupen"
+	base_icon_state = "succupen"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/succubus_milk = 30)
 
 /obj/item/reagent_containers/hypospray/medipen/penisgrowth
@@ -44,9 +47,9 @@
 	righthand_file = 'modular_zzplurt/icons/mob/inhands/equipment/medical_righthand.dmi'
 	icon_state = "incupen"
 	inhand_icon_state = "incupen"
+	base_icon_state = "incupen"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/incubus_draft = 30)
 
-//
 /obj/item/reagent_containers/hypospray/medipen/lewdbomb
 	name = "La Coom Bomb"
 	desc = "Someone forgot what reagent was supposed to go in this one, so they just mixed all the funny ones into it's case... Oh my..."
@@ -55,6 +58,7 @@
 	righthand_file = 'modular_zzplurt/icons/mob/inhands/equipment/medical_righthand.dmi'
 	icon_state = "bombpen"
 	inhand_icon_state = "bombpen"
+	base_icon_state = "bombpen"
 	volume = 30
 	amount_per_transfer_from_this = 30
 	list_reagents = list(
@@ -71,6 +75,7 @@
 	righthand_file = 'modular_zzplurt/icons/mob/inhands/equipment/medical_righthand.dmi'
 	icon_state = "prospen"
 	inhand_icon_state = "prospen"
+	base_icon_state = "prospen"
 	volume = 30
 	amount_per_transfer_from_this = 30
 	list_reagents = list(/datum/reagent/growthchem = 30)
