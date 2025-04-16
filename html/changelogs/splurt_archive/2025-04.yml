@@ -63,3 +63,7 @@
   - rscdel: Removes the gutted Event Horizon anti-existential beam rifle.
   - refactor: Minorly refactors some hitscan tracer generation code to allow for longer
       animated tracers.
+2025-04-13:
+  MosleyTheMalO:
+  - bugfix: attempts to fix undead quirk by editing its traits
+  - rscadd: adds tabletide smite lol
